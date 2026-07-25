@@ -1,10 +1,5 @@
-'use client';
-import TrendingDeals from '@/components/TrendingDeals';
+import { redirect } from 'next/navigation';
 
 export default function DealsPage() {
-  return (
-    <div className="min-h-screen pt-20">
-      <TrendingDeals />
-    </div>
-  );
+  redirect('/shop?featured=true');
 }
