@@ -1,108 +1,99 @@
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Mail, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-950 text-white">
       <div className="max-w-7xl mx-auto px-4 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-blue-300 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">
-                  <img className='h-[5rem] w-[5rem]' src="assets/logo.svg" alt="foot-logo" />
-                </span>
+              <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+                <span className="font-bold text-white text-sm">V</span>
               </div>
-              <span className="font-bold text-xl">PremiumStore</span>
+              <span className="font-bold text-xl">Vynora Digital</span>
             </div>
-            <p className="text-gray-400 mb-6">
-              Your trusted destination for premium quality products with exceptional customer service and unbeatable value.
+            <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+              Premium Digistore24 affiliate marketplace. We curate only high-converting digital products with 50-80% commissions. No inventory, no shipping — just link & earn.
             </p>
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-500">
-                <Facebook className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-500">
-                <Twitter className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-500">
-                <Instagram className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-500">
-                <Youtube className="h-5 w-5" />
-              </Button>
+            <div className="flex flex-col gap-2 text-sm">
+              <div className="flex items-center gap-2 text-gray-300">
+                <ShieldCheck className="h-4 w-4 text-green-400" />
+                <span>All products from Digistore24</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300">
+                <Zap className="h-4 w-4 text-yellow-400" />
+                <span>Instant digital delivery</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-300">
+                <TrendingUp className="h-4 w-4 text-blue-400" />
+                <span>50-80% affiliate commission</span>
+              </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Quick Links</h3>
-            <ul className="space-y-3">
-              <li><a href="/shop" className="text-gray-400 hover:text-white transition-colors">Shop All</a></li>
-              <li><a href="/categories" className="text-gray-400 hover:text-white transition-colors">Categories</a></li>
-              <li><a href="/deals" className="text-gray-400 hover:text-white transition-colors">Deals & Offers</a></li>
-              <li><a href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+            <h3 className="font-semibold text-lg mb-6">Marketplace</h3>
+            <ul className="space-y-3 text-sm">
+              <li><Link href="/shop" className="text-gray-400 hover:text-white transition-colors">All Products</Link></li>
+              <li><Link href="/categories" className="text-gray-400 hover:text-white transition-colors">Categories / Niches</Link></li>
+              <li><Link href="/shop?featured=true" className="text-gray-400 hover:text-white transition-colors">Featured Products</Link></li>
+              <li><Link href="/shop?sort=commission" className="text-gray-400 hover:text-white transition-colors">Highest Commission</Link></li>
+              <li><Link href="/admin" className="text-gray-400 hover:text-white transition-colors">Admin Dashboard</Link></li>
             </ul>
           </div>
 
-          {/* Customer Service */}
+          {/* Support */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Customer Service</h3>
-            <ul className="space-y-3">
-              <li><a href="/help" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="/returns" className="text-gray-400 hover:text-white transition-colors">Returns & Exchanges</a></li>
-              <li><a href="/shipping" className="text-gray-400 hover:text-white transition-colors">Shipping Info</a></li>
-              <li><a href="/warranty" className="text-gray-400 hover:text-white transition-colors">Warranty</a></li>
-              <li><a href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+            <h3 className="font-semibold text-lg mb-6">Affiliate Info</h3>
+            <ul className="space-y-3 text-sm">
+              <li className="text-gray-400">How it works: Click "Get Product" → redirected to Digistore24 secure checkout</li>
+              <li className="text-gray-400">We earn commission if you buy via our link</li>
+              <li className="text-gray-400">All products are digital - no shipping needed</li>
+              <li><a href="https://www.digistore24.com" target="_blank" className="text-blue-400 hover:text-blue-300">About Digistore24 ↗</a></li>
+              <li className="text-xs text-gray-500 pt-2">Disclosure: Affiliate links present. We may earn commission.</li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Stay Connected</h3>
-            <p className="text-gray-400 mb-4">
-              Subscribe to our newsletter for exclusive deals and updates.
+            <h3 className="font-semibold text-lg mb-6">Stay Updated</h3>
+            <p className="text-gray-400 mb-4 text-sm">
+              Get notified about new high-converting Digistore24 products
             </p>
             <div className="space-y-3 mb-6">
-              <Input
+              <input
                 type="email"
                 placeholder="Enter your email"
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400"
+                className="w-full px-4 py-2.5 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-500 text-sm focus:outline-none focus:border-blue-600"
               />
-              <Button className="w-full bg-blue-600 hover:bg-blue-700">
+              <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-lg">
                 Subscribe
               </Button>
             </div>
             
-            <div className="space-y-2 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span>1-800-PREMIUM</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <span>support@premiumstore.com</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
-                <span>New York, NY</span>
-              </div>
+            <div className="flex space-x-2">
+              {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
+                <Button key={i} variant="ghost" size="icon" className="text-gray-400 hover:text-white hover:bg-gray-900 h-9 w-9">
+                  <Icon className="h-4 w-4" />
+                </Button>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 Vynora Premium Store. All rights reserved.
+        <div className="border-t border-gray-900 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-500 text-sm">
+              © 2025 Vynora Digital Marketplace. All rights reserved. Built for Digistore24 affiliates.
             </p>
-            <div className="flex space-x-6 text-sm text-gray-400">
-              <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="/cookies" className="hover:text-white transition-colors">Cookie Policy</a>
+            <div className="flex space-x-6 text-sm text-gray-500">
+              <span>Digital Products Only</span>
+              <span>•</span>
+              <span>No Cart / No Checkout (Affiliate Redirect)</span>
             </div>
           </div>
         </div>

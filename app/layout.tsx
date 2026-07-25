@@ -1,14 +1,36 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Navigation from '@/components/Navigation';
 import { Toaster } from '@/components/ui/sonner';
 
-const inter = Inter({ subsets: ['latin'] });
+// Inter font removed for offline build compatibility - using system font stack
+const inter = { className: 'font-sans antialiased' };
 
 export const metadata: Metadata = {
-  title: 'PremiumStore - Quality Products, Exceptional Experience',
-  description: 'Discover premium products with confidence. Fast shipping, easy returns, and exceptional customer service.',
+  title: {
+    default: 'Vynora Digital - Premium Digistore24 Affiliate Marketplace',
+    template: '%s | Vynora Digital',
+  },
+  description: 'Curated Digistore24 digital products - Health, Finance, Business, Relationships. 50-80% affiliate commissions, instant access, no inventory. #1 affiliate marketplace.',
+  keywords: ['Digistore24', 'affiliate marketplace', 'digital products', 'make money online', 'affiliate marketing', 'health products', 'finance'],
+  authors: [{ name: 'Vynora Digital' }],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://vynora.digital',
+    title: 'Vynora Digital - Premium Digistore24 Marketplace',
+    description: 'High-converting digital products from Digistore24. 50-80% commissions.',
+    siteName: 'Vynora Digital',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vynora Digital Marketplace',
+    description: 'Premium Digistore24 digital products affiliate store',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -18,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-gray-50 antialiased`}>
         <Navigation />
         {children}
         <Toaster />
