@@ -82,7 +82,7 @@ export default function Categories({ categories }: CategoriesProps) {
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover a wide range of products across various categories. Find
-            the perfect solution for your needs, whether it's health, finance,
+            the perfect solution for your needs, whether it&apos;s health, finance,
             business, or personal growth.
           </p>
         </div>

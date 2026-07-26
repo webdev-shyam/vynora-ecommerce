@@ -156,8 +156,8 @@ export default function Navigation() {
 
               <div className="pt-4 border-t border-gray-100">
                 <p className="text-xs text-gray-500 bg-blue-50 p-3 rounded-lg border border-blue-100">
-                  💡 All products are digital from Digistore24. Click "Get
-                  Product" to be redirected to the secure checkout.
+                  💡 All products are digital from Digistore24. Click &quot;Get
+                  Product&quot; to be redirected to the secure checkout.
                 </p>
               </div>
             </div>
