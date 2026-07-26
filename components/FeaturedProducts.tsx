@@ -50,7 +50,11 @@ export default function FeaturedProducts({ products }: Props) {
               <h3 className="text-2xl md:text-3xl font-bold mb-3">
                 Join Vynora Digital Marketplace Today
               </h3>
-              <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">//</p>
+              <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">
+                Browse hand-picked digital products from Digistore24. Every
+                purchase is processed on their secure checkout with instant
+                delivery straight to your inbox.
+              </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto w-full">
                 <div className="text-sm text-blue-100">
                   🔒 Secure • ⚡ Instant Access • 💸Affordable Price

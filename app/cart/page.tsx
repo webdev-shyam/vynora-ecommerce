@@ -13,13 +13,13 @@ export default function CartPage() {
           </div>
           <h1 className="text-3xl font-bold mb-3">No Cart Needed</h1>
           <p className="text-gray-600 mb-2">Vynora Digital is a Digistore24 affiliate marketplace.</p>
-          <p className="text-gray-600 mb-8">No shopping cart, no checkout, no shipping. Click "Get Product" on any product to be redirected directly to the official Digistore24 secure checkout for instant digital delivery.</p>
+          <p className="text-gray-600 mb-8">No shopping cart, no checkout, no shipping. Click &quot;Get Product&quot; on any product to be redirected directly to the official Digistore24 secure checkout for instant digital delivery.</p>
           
           <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-8 text-left text-sm">
             <h4 className="font-semibold text-blue-900 mb-2">How it works:</h4>
             <ol className="list-decimal list-inside space-y-1 text-blue-800">
               <li>Browse digital products</li>
-              <li>Click "Get Product" button</li>
+              <li>Click &quot;Get Product&quot; button</li>
               <li>Redirected to Digistore24 official checkout</li>
               <li>Pay securely & get instant access</li>
               <li>We earn commission, you get best products</li>
