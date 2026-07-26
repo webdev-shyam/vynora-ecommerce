@@ -1,6 +1,4 @@
 import { getProducts, getCategories } from '@/lib/queries';
-import ProductGrid from '@/components/ProductGrid';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
@@ -44,7 +42,7 @@ export default async function ShopPage({ searchParams }: { searchParams: SearchP
                   {q ? `Search: "${q}"` : category ? `${category} Products` : featured ? 'Featured Products' : 'All Digital Products'}
                 </h1>
                 <p className="text-gray-600 mt-2">
-                  {products.length} premium Digistore24 products found
+                  {products.length} digital products found
                   {q && ` • Search for "${q}"`}
                 </p>
                 {(q || category || niche || featured) && (
@@ -56,12 +54,6 @@ export default async function ShopPage({ searchParams }: { searchParams: SearchP
                     <Link href="/shop" className="text-xs text-blue-600 hover:underline">Clear filters</Link>
                   </div>
                 )}
-              </div>
-
-              <div className="flex items-center gap-3">
-                <form className="hidden">
-                  {/* Sort handled client side */}
-                </form>
               </div>
             </div>
           </div>

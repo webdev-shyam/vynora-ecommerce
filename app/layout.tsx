@@ -8,24 +8,24 @@ const inter = { className: 'font-sans antialiased' };
 
 export const metadata: Metadata = {
   title: {
-    default: 'Vynora Digital - Premium Digistore24 Affiliate Marketplace',
+    default: 'Vynora Digital - Premium Digital Products & Masterclasses Marketplace',
     template: '%s | Vynora Digital',
   },
-  description: 'Curated Digistore24 digital products - Health, Finance, Business, Relationships. 50-80% affiliate commissions, instant access, no inventory. #1 affiliate marketplace.',
-  keywords: ['Digistore24', 'affiliate marketplace', 'digital products', 'make money online', 'affiliate marketing', 'health products', 'finance'],
+  description: 'Curated digital products, online courses, software tools, and e-books in Health, Finance, Business, & Personal Development. Instant digital access, secure checkout, 60-day guarantee.',
+  keywords: ['digital products', 'online courses', 'e-books', 'software tools', 'health guides', 'finance courses', 'personal growth'],
   authors: [{ name: 'Vynora Digital' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://vynora.digital',
-    title: 'Vynora Digital - Premium Digistore24 Marketplace',
-    description: 'High-converting digital products from Digistore24. 50-80% commissions.',
-    siteName: 'Vynora Digital',
+    title: 'Vynora Digital - Premium Digital Products Marketplace',
+    description: 'Discover verified digital courses, e-books, and tools with instant delivery and secure checkout.',
+    siteName: 'Vynora Digital Marketplace',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Vynora Digital Marketplace',
-    description: 'Premium Digistore24 digital products affiliate store',
+    description: 'Curated digital products and guides with instant online access.',
   },
   robots: {
     index: true,

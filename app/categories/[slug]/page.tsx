@@ -17,7 +17,6 @@ export default async function CategoryDetailPage({ params }: { params: { slug: s
   if (!category) notFound();
 
   const products = await getProducts({ category: category.slug }) as any[];
-  // Fallback check by name if no products found by slug
   const productsByName = products.length === 0 ? await getProducts({ category: category.name }) as any[] : [];
   const finalProducts = products.length > 0 ? products : productsByName;
 
@@ -37,12 +36,12 @@ export default async function CategoryDetailPage({ params }: { params: { slug: s
               </div>
               <div>
                 <h1 className="text-4xl font-bold text-gray-900 tracking-tight mb-3">{category.name}</h1>
-                <p className="text-lg text-gray-600 max-w-2xl">{category.description || `Best digital products in ${category.name} niche from Digistore24`}</p>
+                <p className="text-lg text-gray-600 max-w-2xl">{category.description || `Best digital products, guides, and courses in ${category.name}`}</p>
                 <div className="mt-4 flex items-center gap-4">
                   <span className="px-3 py-1 bg-blue-50 border border-blue-100 text-blue-700 rounded-full text-sm font-medium">
                     {finalProducts.length} products
                   </span>
-                  <span className="text-sm text-gray-500">Digital Affiliate Products • 50-80% Commission</span>
+                  <span className="text-sm text-gray-500">Instant Digital Access • 60-Day Guarantee</span>
                 </div>
               </div>
             </div>
