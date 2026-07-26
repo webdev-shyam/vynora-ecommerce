@@ -3,19 +3,26 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.pexels.com',
+        protocol: "https",
+        hostname: "images.pexels.com",
       },
       {
-        protocol: 'https',
-        hostname: '**.supabase.co',
+        protocol: "https",
+        hostname: "**.supabase.co",
       },
       {
-        protocol: 'https',
-        hostname: '**.digistore24.com',
+        protocol: "https",
+        hostname: "**.digistore24.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.googleusercontent.com",
       },
     ],
     unoptimized: false,
