@@ -50,14 +50,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           </Badge>
         </div>
 
-        <div className="absolute top-3 right-3">
-          <Badge className="bg-green-600 hover:bg-green-700 text-white flex items-center gap-1">
-            <BadgePercent className="h-3 w-3" />
-            {product.commission}% Comm
-          </Badge>
-        </div>
       </div>
 
+      
       <div className="p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-2 mb-2">
           <Badge variant="outline" className="text-xs border-blue-200 text-blue-700 bg-blue-50">

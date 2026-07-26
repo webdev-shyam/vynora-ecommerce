@@ -1,7 +1,85 @@
-'use client';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
-import Link from 'next/link';
+"use client";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+type IconProps = {
+  className?: string;
+};
+
+const ArrowRightIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
+  </svg>
+);
+
+const SparklesIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z" />
+    <path d="M19 15l.5 2.5L22 18l-2.5.5L19 21l-.5-2.5L16 18l2.5-.5L19 15z" />
+    <path d="M5 15l.5 2.5L8 18l-2.5.5L5 21l-.5-2.5L2 18l2.5-.5L5 15z" />
+  </svg>
+);
+
+const ShieldCheckIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z" />
+    <path d="m9 12 2 2 4-4" />
+  </svg>
+);
+
+const ZapIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" />
+  </svg>
+);
+
+const TrendingUpIcon = ({ className }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M3 17l6-6 4 4 8-10" />
+    <path d="M14 5h7v7" />
+  </svg>
+);
 
 export default function Hero() {
   return (
@@ -16,33 +94,38 @@ export default function Hero() {
         {/* Content */}
         <div className="text-center lg:text-left space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-blue-100 text-sm font-medium text-blue-700">
-            <Sparkles className="h-4 w-4" />
-            #1 Digistore24 Affiliate Marketplace
-            <span className="px-2 py-0.5 bg-blue-600 text-white rounded-full text-xs">NEW</span>
+            <SparklesIcon className="h-4 w-4" />
+
+            <span className="px-2 py-0.5 bg-blue-600 text-white rounded-full text-xs">
+              NEW
+            </span>
           </div>
 
           <div className="space-y-4">
             <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
               Premium Digital
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent block">
-                Products That Sell
-              </span>
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent block"></span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl leading-relaxed">
-              Curated Digistore24 bestsellers in health, wealth, relationships & growth. 50-80% commissions, instant delivery, no inventory.
-            </p>
+            <p className="text-xl text-gray-600 max-w-2xl leading-relaxed"></p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Link href="/shop">
-              <Button size="lg" className="text-base px-8 py-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/20 rounded-full group">
+              <Button
+                size="lg"
+                className="text-base px-8 py-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/20 rounded-full group"
+              >
                 Browse Products
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRightIcon className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
             <Link href="/categories">
-              <Button size="lg" variant="outline" className="text-base px-8 py-6 rounded-full border-gray-300 hover:bg-white">
-                View Niches
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base px-8 py-6 rounded-full border-gray-300 hover:bg-white"
+              >
+                View Categories
               </Button>
             </Link>
           </div>
@@ -51,25 +134,27 @@ export default function Hero() {
           <div className="grid grid-cols-3 gap-6 pt-2 text-sm max-w-md mx-auto lg:mx-0">
             <div className="flex flex-col items-center lg:items-start gap-2">
               <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
-                <ShieldCheck className="h-5 w-5 text-green-600" />
+                <ShieldCheckIcon className="h-5 w-5 text-green-600" />
               </div>
               <div>
-                <div className="font-semibold text-gray-900">Instant Access</div>
+                <div className="font-semibold text-gray-900">
+                  Instant Access
+                </div>
                 <div className="text-xs text-gray-500">No shipping, 24/7</div>
               </div>
             </div>
             <div className="flex flex-col items-center lg:items-start gap-2">
               <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
-                <Zap className="h-5 w-5 text-blue-600" />
+                <ZapIcon className="h-5 w-5 text-blue-600" />
               </div>
               <div>
-                <div className="font-semibold text-gray-900">High Converting</div>
-                <div className="text-xs text-gray-500">Tested offers</div>
+                <div className="font-semibold text-gray-900"></div>
+                <div className="text-xs text-gray-500"></div>
               </div>
             </div>
             <div className="flex flex-col items-center lg:items-start gap-2">
               <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
-                <TrendingUp className="h-5 w-5 text-purple-600" />
+                <TrendingUpIcon className="h-5 w-5 text-purple-600" />
               </div>
               <div>
                 <div className="font-semibold text-gray-900">50-80% Comms</div>
@@ -91,7 +176,9 @@ export default function Hero() {
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
               <div className="flex items-end justify-between">
                 <div>
-                  <p className="text-blue-200 text-sm font-medium mb-1">TOTAL PRODUCTS</p>
+                  <p className="text-blue-200 text-sm font-medium mb-1">
+                    TOTAL PRODUCTS
+                  </p>
                   <p className="text-4xl font-bold">12+ Premium</p>
                 </div>
                 <div className="text-right">
@@ -109,7 +196,9 @@ export default function Hero() {
                 <span className="text-green-600 font-bold text-sm">$</span>
               </div>
               <div>
-                <p className="font-semibold text-sm text-gray-900">Top Commission</p>
+                <p className="font-semibold text-sm text-gray-900">
+                  Top Commission
+                </p>
                 <p className="text-xs text-gray-600">80% per sale - $797</p>
               </div>
             </div>
@@ -120,11 +209,11 @@ export default function Hero() {
 
           <div className="absolute -right-6 bottom-[20%] bg-white rounded-2xl p-4 shadow-xl border border-gray-100 hidden lg:block animate-in fade-in slide-in-from-right-4 duration-700 delay-200">
             <div className="flex items-center gap-3">
-              <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100" className="w-10 h-10 rounded-full object-cover" alt="user" />
-              <div>
-                <p className="font-semibold text-sm text-gray-900">Sarah earned $1.2k</p>
-                <p className="text-xs text-gray-500">from 3 sales today</p>
-              </div>
+              <img
+                src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100"
+                className="w-10 h-10 rounded-full object-cover"
+                alt="user"
+              />
             </div>
           </div>
         </div>

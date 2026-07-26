@@ -1,6 +1,6 @@
-'use client';
-import { Card } from '@/components/ui/card';
-import Link from 'next/link';
+"use client";
+import { Card } from "@/components/ui/card";
+import Link from "next/link";
 
 type CategoryDisplay = {
   id: string;
@@ -17,70 +17,73 @@ interface CategoriesProps {
 
 const fallbackCategories: CategoryDisplay[] = [
   {
-    id: 'cat_health',
-    name: 'Health & Fitness',
-    slug: 'health-fitness',
-    description: 'Biohacking, weight loss, nutrition',
-    image: 'https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg',
+    id: "cat_health",
+    name: "Health & Fitness",
+    slug: "health-fitness",
+    description: "Biohacking, weight loss, nutrition",
+    image: "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg",
     count: 3,
   },
   {
-    id: 'cat_finance',
-    name: 'Finance & Investing',
-    slug: 'finance-investing',
-    description: 'Crypto, wealth, investing',
-    image: 'https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg',
+    id: "cat_finance",
+    name: "Finance & Investing",
+    slug: "finance-investing",
+    description: "Crypto, wealth, investing",
+    image: "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg",
     count: 2,
   },
   {
-    id: 'cat_business',
-    name: 'Business & Marketing',
-    slug: 'business-marketing',
-    description: 'Affiliate, agency, ecommerce',
-    image: 'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg',
+    id: "cat_business",
+    name: "Business & Marketing",
+    slug: "business-marketing",
+    description: "Affiliate, agency, ecommerce",
+    image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg",
     count: 3,
   },
   {
-    id: 'cat_mindset',
-    name: 'Mindset & Spirituality',
-    slug: 'mindset-spirituality',
-    description: 'Manifestation, meditation',
-    image: 'https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg',
+    id: "cat_mindset",
+    name: "Mindset & Spirituality",
+    slug: "mindset-spirituality",
+    description: "Manifestation, meditation",
+    image: "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg",
     count: 1,
   },
   {
-    id: 'cat_relationship',
-    name: 'Relationships',
-    slug: 'relationships',
-    description: 'Dating, love, connection',
-    image: 'https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg',
+    id: "cat_relationship",
+    name: "Relationships",
+    slug: "relationships",
+    description: "Dating, love, connection",
+    image: "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg",
     count: 2,
   },
   {
-    id: 'cat_education',
-    name: 'Education & Skills',
-    slug: 'education-skills',
-    description: 'Coding, AI, career',
-    image: 'https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg',
+    id: "cat_education",
+    name: "Education & Skills",
+    slug: "education-skills",
+    description: "Coding, AI, career",
+    image: "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg",
     count: 1,
   },
 ];
 
 export default function Categories({ categories }: CategoriesProps) {
-  const display = categories && categories.length > 0 ? categories : fallbackCategories;
+  const display =
+    categories && categories.length > 0 ? categories : fallbackCategories;
 
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-block px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-sm font-medium text-blue-700 mb-4">
-            Explore Niches
+            Explore Your Needs
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Shop by Niche Category
+            Browse by Category
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            High-converting Digistore24 niches proven to generate 6-figure affiliate commissions
+            Discover a wide range of products across various categories. Find
+            the perfect solution for your needs, whether it's health, finance,
+            business, or personal growth.
           </p>
         </div>
 
@@ -90,7 +93,10 @@ export default function Categories({ categories }: CategoriesProps) {
               <Card className="group overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer border-gray-200 hover:border-blue-200 h-full">
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
-                    src={category.image || 'https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg'}
+                    src={
+                      category.image ||
+                      "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
+                    }
                     alt={category.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />

@@ -1,9 +1,9 @@
-'use client';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
-import ProductCard from './ProductCard';
+"use client";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import ProductCard from "./ProductCard";
 
 type Props = {
   products: any[];
@@ -25,7 +25,8 @@ export default function FeaturedProducts({ products }: Props) {
               Featured Digital Products
             </h2>
             <p className="text-lg text-gray-600 mt-2 max-w-xl">
-              Hand-picked Digistore24 bestsellers with 50-80% commission, high gravity, low refund rate
+              Discover our hand pick useful digital products that are currently
+              trending.
             </p>
           </div>
           <Link href="/shop?featured=true">
@@ -47,19 +48,12 @@ export default function FeaturedProducts({ products }: Props) {
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
             <div className="relative z-10 max-w-4xl mx-auto text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-3">
-                Ready to Earn 50-80% Per Sale?
+                Join Vynora Digital Marketplace Today
               </h3>
-              <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">
-                Join Vynora Digital. Every product is from Digistore24 - trusted by 500k+ affiliates. No inventory, instant payout, lifetime commissions on some offers.
-              </p>
+              <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">//</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto w-full">
-                <Link href="/shop" className="w-full sm:w-auto">
-                  <Button size="lg" variant="secondary" className="w-full sm:w-auto rounded-full px-8 bg-white text-blue-600 hover:bg-blue-50 font-semibold">
-                    Start Promoting Today
-                  </Button>
-                </Link>
                 <div className="text-sm text-blue-100">
-                  🔒 Secure • ⚡ Instant Access • 💸 High Commissions
+                  🔒 Secure • ⚡ Instant Access • 💸Affordable Price
                 </div>
               </div>
             </div>
