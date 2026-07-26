@@ -94,7 +94,6 @@ export default function ProductCard({ product }: ProductCardProps) {
               <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-0.5 transition-transform" />
             </Button>
           </a>
-          <p className="text-[10px] text-center text-gray-400">Redirects to Digistore24 secure checkout</p>
         </div>
       </div>
     </Card>

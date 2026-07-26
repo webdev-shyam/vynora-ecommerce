@@ -36,7 +36,7 @@ const fallbackCategories: CategoryDisplay[] = [
     id: "cat_business",
     name: "Business & Marketing",
     slug: "business-marketing",
-    description: "Affiliate, agency, ecommerce",
+    description: "Marketing, agency, ecommerce",
     image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg",
     count: 3,
   },
