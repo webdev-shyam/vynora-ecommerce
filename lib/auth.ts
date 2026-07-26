@@ -1,79 +1,71 @@
-import type { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import type { NextAuthOptions } from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-/**
- * Single-admin credentials.
- *
- * Configure these for production via environment variables
- * (see `.env.example`). Sensible dev defaults are provided so the
- * admin login works out of the box locally.
- */
-export const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@vynora.digital';
-export const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Vynora@Admin2026';
-
-/**
- * Secret used to sign/verify the NextAuth session JWT.
- *
- * IMPORTANT: set `NEXTAUTH_SECRET` to a strong random value in production
- * (e.g. `openssl rand -base64 32`). The middleware imports the same value so
- * that the JWT signed by the route handler can be verified on the Edge.
- */
-export const AUTH_SECRET =
-  process.env.NEXTAUTH_SECRET || 'vynora-dev-secret-change-in-production';
+function getAdminEmails(): string[] {
+  const env = process.env.ADMIN_EMAILS || process.env.ADMIN_EMAIL || "";
+  if (!env) return [];
+  return env
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+}
 
 export const authOptions: NextAuthOptions = {
-  secret: AUTH_SECRET,
-  session: {
-    strategy: 'jwt',
-  },
-  pages: {
-    signIn: '/admin/login',
-  },
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
     CredentialsProvider({
-      name: 'Admin Login',
+      name: "Admin Credentials",
       credentials: {
-        email: { label: 'Email', type: 'email', placeholder: 'admin@vynora.digital' },
-        password: { label: 'Password', type: 'password' },
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const email = credentials?.email?.trim().toLowerCase();
-        const password = credentials?.password;
+        const adminEmails = getAdminEmails();
+        const adminPassword = process.env.ADMIN_PASSWORD;
 
-        if (!email || !password) return null;
+        if (!credentials?.email || !credentials?.password) return null;
 
-        if (
-          email === ADMIN_EMAIL.toLowerCase() &&
-          password === ADMIN_PASSWORD
-        ) {
-          return {
-            id: '1',
-            name: 'Vynora Admin',
-            email: ADMIN_EMAIL,
-            role: 'admin',
-          };
+        const emailLower = credentials.email.toLowerCase().trim();
+
+        if (adminPassword && credentials.password !== adminPassword) {
+          return null;
         }
 
-        return null;
+        if (adminEmails.length > 0 && !adminEmails.includes(emailLower)) {
+          return null;
+        }
+
+        return {
+          id: emailLower,
+          email: emailLower,
+          name: emailLower.split("@")[0],
+        } as any;
       },
     }),
   ],
+  session: { strategy: "jwt", maxAge: 60 * 60 * 8 },
   callbacks: {
+    async signIn({ user }) {
+      const adminEmails = getAdminEmails();
+      if (adminEmails.length === 0) return true;
+      if (!user.email) return false;
+      return adminEmails.includes(user.email.toLowerCase());
+    },
     async jwt({ token, user }) {
-      // Persist the admin role onto the JWT on first sign-in.
-      if (user) {
-        token.role = (user as { role?: string }).role;
-        token.id = user.id;
-      }
+      if (user) token.email = user.email;
       return token;
     },
     async session({ session, token }) {
-      // Expose the role/id on the client session object.
-      if (session.user) {
-        (session.user as { role?: string }).role = token.role as string | undefined;
-        (session.user as { id?: string }).id = token.id as string | undefined;
+      if (token?.email) {
+        session.user = { ...session.user, email: token.email as string } as any;
       }
       return session;
     },
   },
+  pages: { signIn: "/admin/login", error: "/admin/login" },
+  secret: process.env.NEXTAUTH_SECRET,
 };

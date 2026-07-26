@@ -25,12 +25,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-base">
-                V
-              </div>
-              <span className="font-bold text-lg text-gray-900 tracking-tight">
-                Vynora Digital
-              </span>
+              <img className="h-20 w-40" src="./assets/logo.svg" alt="" />
             </div>
           </Link>
 
@@ -91,7 +86,11 @@ export default function Navigation() {
           {/* Right Navigation */}
           <div className="flex items-center space-x-2">
             <Link href="/admin" className="hidden md:block">
-              <Button variant="ghost" size="sm" className="gap-1.5 text-gray-600">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-1.5 text-gray-600"
+              >
                 <LayoutDashboard className="h-4 w-4" />
                 Admin
               </Button>
@@ -187,7 +186,8 @@ export default function Navigation() {
 
               <div className="pt-3 border-t border-gray-100">
                 <p className="text-xs text-gray-600 bg-blue-50 p-3 rounded-lg border border-blue-100">
-                  💡 All digital products feature instant online delivery and secure partner checkout.
+                  💡 All digital products feature instant online delivery and
+                  secure partner checkout.
                 </p>
               </div>
             </div>

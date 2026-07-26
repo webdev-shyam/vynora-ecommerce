@@ -21,14 +21,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
-                <span className="font-bold text-white text-base">V</span>
-              </div>
-              <span className="font-bold text-xl tracking-tight">Vynora Digital</span>
+            <div className="flex items-center space-x-2 mb-4 bg-blue-200 rounded-lg p-2">
+              <img className="h-20 w-80" src="./assets/logo.svg" alt="" />
             </div>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-              Vynora Digital is your trusted destination for curated digital products, masterclasses, e-books, and software tools with instant delivery and secure checkout.
+              Vynora Digital is your trusted destination for curated digital
+              products, masterclasses, e-books, and software tools with instant
+              delivery and secure checkout.
             </p>
             <div className="space-y-2 text-sm text-gray-400">
               <div className="flex items-center gap-2">
@@ -44,7 +43,9 @@ export default function Footer() {
 
           {/* Quick Marketplace Links */}
           <div>
-            <h3 className="font-semibold text-base text-gray-200 mb-4 tracking-wide uppercase text-xs">Marketplace</h3>
+            <h3 className="font-semibold text-gray-200 mb-4 tracking-wide uppercase text-xs">
+              Marketplace
+            </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
@@ -91,7 +92,9 @@ export default function Footer() {
 
           {/* Customer Care & FAQ */}
           <div>
-            <h3 className="font-semibold text-base text-gray-200 mb-4 tracking-wide uppercase text-xs">Customer Care</h3>
+            <h3 className="font-semibold text-gray-200 mb-4 tracking-wide uppercase text-xs">
+              Customer Care
+            </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
@@ -146,9 +149,12 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="font-semibold text-base text-gray-200 mb-4 tracking-wide uppercase text-xs">Stay Updated</h3>
+            <h3 className="font-semibold text-xs text-gray-200 mb-4 tracking-wide uppercase">
+              Stay Updated
+            </h3>
             <p className="text-gray-400 mb-4 text-sm leading-relaxed">
-              Subscribe to get notified about new digital releases, special discounts, and top course launches.
+              Subscribe to get notified about new digital releases, special
+              discounts, and top course launches.
             </p>
             <div className="space-y-3 mb-6">
               <input
@@ -178,17 +184,45 @@ export default function Footer() {
 
         <div className="border-t border-gray-900 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-            <p>© {new Date().getFullYear()} Vynora Digital Marketplace. All rights reserved.</p>
+            <p>
+              © {new Date().getFullYear()} Vynora Digital Marketplace. All
+              rights reserved.
+            </p>
             <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400">
-              <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+              <Link
+                href="/privacy"
+                className="hover:text-white transition-colors"
+              >
+                Privacy
+              </Link>
               <span>•</span>
-              <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+              <Link
+                href="/terms"
+                className="hover:text-white transition-colors"
+              >
+                Terms
+              </Link>
               <span>•</span>
-              <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
+              <Link
+                href="/cookies"
+                className="hover:text-white transition-colors"
+              >
+                Cookies
+              </Link>
               <span>•</span>
-              <Link href="/refund" className="hover:text-white transition-colors">Refunds</Link>
+              <Link
+                href="/refund"
+                className="hover:text-white transition-colors"
+              >
+                Refunds
+              </Link>
               <span>•</span>
-              <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
+              <Link
+                href="/contact"
+                className="hover:text-white transition-colors"
+              >
+                Contact
+              </Link>
             </div>
           </div>
         </div>
