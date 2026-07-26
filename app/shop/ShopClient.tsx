@@ -41,7 +41,6 @@ export default function ShopClient({ initialProducts, categories, initialQuery, 
   };
 
   const handleCategory = (catSlug: string, catName: string) => {
-    // if clicking same category, clear
     const current = searchParams.get('category');
     if (current === catSlug || current === catName) {
       updateParams('category', '');
@@ -73,15 +72,14 @@ export default function ShopClient({ initialProducts, categories, initialQuery, 
             Filters
           </Button>
           <select
-            value={initialSort}
+            value={initialSort === 'commission' ? 'rating' : initialSort}
             onChange={(e) => handleSort(e.target.value)}
             className="h-10 px-4 py-2 border border-gray-300 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="newest">Newest</option>
-            <option value="rating">Highest Rated</option>
+            <option value="rating">Top Rated</option>
             <option value="price-low">Price: Low to High</option>
             <option value="price-high">Price: High to Low</option>
-            <option value="commission">Highest Commission</option>
           </select>
         </div>
       </div>
@@ -139,8 +137,7 @@ export default function ShopClient({ initialProducts, categories, initialQuery, 
                 <div>
                   <h4 className="text-sm font-medium mb-3">Quick Filters</h4>
                   <div className="space-y-2">
-                    <Link href="/shop?featured=true" className="block text-sm text-blue-600 hover:underline">🔥 Featured only</Link>
-                    <Link href="/shop?sort=commission" className="block text-sm text-blue-600 hover:underline">💰 Highest commission</Link>
+                    <Link href="/shop?featured=true" className="block text-sm text-blue-600 hover:underline">🔥 Featured products</Link>
                     <Link href="/shop?sort=rating" className="block text-sm text-blue-600 hover:underline">⭐ Top rated</Link>
                     <Link href="/shop" className="block text-sm text-gray-500 hover:text-gray-700">Clear all filters</Link>
                   </div>

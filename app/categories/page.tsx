@@ -30,8 +30,8 @@ export default async function CategoriesPage() {
         <CategoriesComponent categories={display} />
         <div className="max-w-7xl mx-auto px-4 py-12 text-center">
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-2">All categories are digital products</h3>
-            <p className="text-blue-100 max-w-2xl mx-auto">No inventory, no shipping. Click &quot;Get Product&quot; on any item to be redirected to Digistore24 affiliate checkout with 50-80% commission.</p>
+            <h3 className="text-2xl font-bold mb-2">Instant Digital Download Across All Categories</h3>
+            <p className="text-blue-100 max-w-2xl mx-auto">No inventory, no shipping waiting time. Click &quot;Get Product&quot; on any item to be redirected to the secure official checkout with instant digital delivery.</p>
           </div>
         </div>
       </div>
