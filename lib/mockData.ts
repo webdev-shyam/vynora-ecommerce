@@ -33,42 +33,48 @@ export const mockCategories: MockCategory[] = [
     name: "Health & Fitness",
     slug: "health-fitness",
     description: "Transform your body and mind with proven health programs",
-    image: "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image:
+      "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "cat_finance",
     name: "Finance & Investing",
     slug: "finance-investing",
     description: "Master money, wealth building and financial freedom",
-    image: "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image:
+      "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "cat_business",
     name: "Business & Marketing",
     slug: "business-marketing",
     description: "Scale your business with high-converting strategies",
-    image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image:
+      "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "cat_mindset",
     name: "Mindset & Spirituality",
     slug: "mindset-spirituality",
     description: "Unlock your potential and inner peace",
-    image: "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image:
+      "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "cat_relationship",
     name: "Relationships",
     slug: "relationships",
     description: "Build stronger, more fulfilling connections",
-    image: "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image:
+      "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "cat_education",
     name: "Education & Skills",
     slug: "education-skills",
     description: "Learn high-income skills for the digital economy",
-    image: "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image:
+      "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 ];
 
@@ -77,8 +83,10 @@ export const mockProducts: MockProduct[] = [
     id: "prod_1",
     title: "Biohacking Secrets - Ultimate Health Protocol",
     slug: "biohacking-secrets-ultimate-health-protocol",
-    description: "Discover the underground biohacking methods used by elite performers to double energy, reverse aging, and optimize every cell in your body. This comprehensive program includes diet protocols, supplement stacks, sleep optimization, and 90-day transformation blueprint.\n\nWhat you'll learn:\n• The 7 biohacks that add 10 years to your life\n• How to fix gut health in 14 days\n• Morning routine of billionaires\n• Hormone optimization naturally\n• Brain performance toolkit",
-    image: "https://images.pexels.com/photos/4047186/pexels-photo-4047186.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description:
+      "Discover the underground biohacking methods used by elite performers to double energy, reverse aging, and optimize every cell in your body. This comprehensive program includes diet protocols, supplement stacks, sleep optimization, and 90-day transformation blueprint.\n\nWhat you'll learn:\n• The 7 biohacks that add 10 years to your life\n• How to fix gut health in 14 days\n• Morning routine of billionaires\n• Hormone optimization naturally\n• Brain performance toolkit",
+    image:
+      "https://images.pexels.com/photos/4047186/pexels-photo-4047186.jpeg?auto=compress&cs=tinysrgb&w=800",
     images: [
       "https://images.pexels.com/photos/4047186/pexels-photo-4047186.jpeg?auto=compress&cs=tinysrgb&w=800",
       "https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -100,9 +108,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_2",
     title: "Crypto Quantum Leap - Millionaire Trading Formula",
     slug: "crypto-quantum-leap-millionaire-trading",
-    description: "Former Wall Street trader reveals his exact 3-step formula to predict crypto pumps before they happen. No experience needed. Includes live trading signals, portfolio tracker, and private community access. Over $2M profits documented.\n\nInside:\n• How to spot 10x altcoins in 5 minutes\n• Risk management that never loses more than 2%\n• The Elon Effect indicator\n• Copy my trades daily",
-    image: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "Former Wall Street trader reveals his exact 3-step formula to predict crypto pumps before they happen. No experience needed. Includes live trading signals, portfolio tracker, and private community access. Over $2M profits documented.\n\nInside:\n• How to spot 10x altcoins in 5 minutes\n• Risk management that never loses more than 2%\n• The Elon Effect indicator\n• Copy my trades daily",
+    image:
+      "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 97,
     category: "Finance & Investing",
     categoryId: "cat_finance",
@@ -120,9 +132,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_3",
     title: "Manifestation Magic - 15 Minute Miracle",
     slug: "manifestation-magic-15-minute-miracle",
-    description: "NASA discovered brain wave that unlocks unlimited abundance. This 15-minute audio track reprograms your subconscious for wealth, love, and success. Used by 19,000+ people worldwide. Play it while you sleep.\n\nBenefits:\n• Attract money effortlessly\n• Remove limiting beliefs\n• Better sleep and less anxiety\n• Manifest your soulmate",
-    image: "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "NASA discovered brain wave that unlocks unlimited abundance. This 15-minute audio track reprograms your subconscious for wealth, love, and success. Used by 19,000+ people worldwide. Play it while you sleep.\n\nBenefits:\n• Attract money effortlessly\n• Remove limiting beliefs\n• Better sleep and less anxiety\n• Manifest your soulmate",
+    image:
+      "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 39,
     category: "Mindset & Spirituality",
     categoryId: "cat_mindset",
@@ -140,9 +156,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_4",
     title: "Affiliate Marketing Mastery 2025",
     slug: "affiliate-marketing-mastery-2025",
-    description: "Complete A-Z blueprint to build a $10k/month affiliate business in 90 days. No product needed. No email list needed. Includes DFY funnels, traffic sources, and 1-on-1 coaching call. Perfect for beginners.\n\nModules:\n1. Niche selection goldmine\n2. Digistore24 product research\n3. TikTok organic traffic explosion\n4. Email automation that sells while you sleep\n5. Scaling to 6 figures",
-    image: "https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "Complete A-Z blueprint to build a $10k/month affiliate business in 90 days. No product needed. No email list needed. Includes DFY funnels, traffic sources, and 1-on-1 coaching call. Perfect for beginners.\n\nModules:\n1. Niche selection goldmine\n2. Digistore24 product research\n3. TikTok organic traffic explosion\n4. Email automation that sells while you sleep\n5. Scaling to 6 figures",
+    image:
+      "https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 197,
     category: "Business & Marketing",
     categoryId: "cat_business",
@@ -160,9 +180,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_5",
     title: "Text Chemistry - Get Him Obsessed",
     slug: "text-chemistry-get-him-obsessed",
-    description: "Relationship expert Amy North reveals the secret text messages that make any man obsessed with you. Over 29,000 women used this to save their relationship, get ex back, or make him commit. Works even if he is ignoring you.\n\nLearn:\n• The Attention Seeker text\n• E-Glow text that triggers obsession\n• How to make him miss you badly\n• 100+ copy-paste templates",
-    image: "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "Relationship expert Amy North reveals the secret text messages that make any man obsessed with you. Over 29,000 women used this to save their relationship, get ex back, or make him commit. Works even if he is ignoring you.\n\nLearn:\n• The Attention Seeker text\n• E-Glow text that triggers obsession\n• How to make him miss you badly\n• 100+ copy-paste templates",
+    image:
+      "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 49,
     category: "Relationships",
     categoryId: "cat_relationship",
@@ -180,9 +204,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_6",
     title: "Yoga Burn - 12 Week Body Shaping",
     slug: "yoga-burn-12-week-body-shaping",
-    description: "Lose 20 pounds without gym or diet. This 12-week yoga program designed specifically for women to burn fat, tone body, and reduce stress. Follow along videos, done in your bedroom in 15 minutes. No equipment needed.\n\nIncludes:\n• Phase 1: Foundation flow\n• Phase 2: Transitional flow\n• Phase 3: Mastery flow\n• Bonus: Meditation audios",
-    image: "https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "Lose 20 pounds without gym or diet. This 12-week yoga program designed specifically for women to burn fat, tone body, and reduce stress. Follow along videos, done in your bedroom in 15 minutes. No equipment needed.\n\nIncludes:\n• Phase 1: Foundation flow\n• Phase 2: Transitional flow\n• Phase 3: Mastery flow\n• Bonus: Meditation audios",
+    image:
+      "https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 37,
     category: "Health & Fitness",
     categoryId: "cat_health",
@@ -200,9 +228,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_7",
     title: "Super Affiliate System - John Crestani",
     slug: "super-affiliate-system-john-crestani",
-    description: "Learn how to build a profitable affiliate marketing business from scratch. John spent $2M on ads to perfect this system. Includes buyer data, pre-built campaigns, and traffic secrets for Google, YouTube, Facebook.\n\n6-week intensive:\n• Customer journey mastery\n• Copywriting for conversions\n• Paid ads blueprint",
-    image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "Learn how to build a profitable affiliate marketing business from scratch. John spent $2M on ads to perfect this system. Includes buyer data, pre-built campaigns, and traffic secrets for Google, YouTube, Facebook.\n\n6-week intensive:\n• Customer journey mastery\n• Copywriting for conversions\n• Paid ads blueprint",
+    image:
+      "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 997,
     category: "Business & Marketing",
     categoryId: "cat_business",
@@ -220,9 +252,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_8",
     title: "His Secret Obsession - Hero Instinct",
     slug: "his-secret-obsession-hero-instinct",
-    description: "Bestselling author James Bauer reveals the one secret that makes men fall deeply in love and stay forever. Trigger his hero instinct with a simple 12-word text. Over 1 million copies sold.\n\nDiscover:\n• Why men pull away\n• 3 behaviors that kill attraction\n• The X-ray question that reveals everything",
-    image: "https://images.pexels.com/photos/1028723/pexels-photo-1028723.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/1028723/pexels-photo-1028723.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "Bestselling author James Bauer reveals the one secret that makes men fall deeply in love and stay forever. Trigger his hero instinct with a simple 12-word text. Over 1 million copies sold.\n\nDiscover:\n• Why men pull away\n• 3 behaviors that kill attraction\n• The X-ray question that reveals everything",
+    image:
+      "https://images.pexels.com/photos/1028723/pexels-photo-1028723.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/1028723/pexels-photo-1028723.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 47,
     category: "Relationships",
     categoryId: "cat_relationship",
@@ -240,9 +276,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_9",
     title: "Python Mastery - Zero to AI Engineer",
     slug: "python-mastery-zero-to-ai-engineer",
-    description: "Complete Python course from zero to building AI apps. Build 30 real projects, learn ChatGPT API, data science, and land a $120k job. Lifetime access + certificate + job placement help.",
-    image: "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "Complete Python course from zero to building AI apps. Build 30 real projects, learn ChatGPT API, data science, and land a $120k job. Lifetime access + certificate + job placement help.",
+    image:
+      "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 79,
     category: "Education & Skills",
     categoryId: "cat_education",
@@ -260,9 +300,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_10",
     title: "Wealth DNA Code - Activate Abundance",
     slug: "wealth-dna-code-activate-abundance",
-    description: "Scientists discovered 3% of people have 'Wealth DNA' activated. This audio program reactivates your root chakra's wealth frequency in 7 minutes. NASA research + ancient Egyptian knowledge.",
-    image: "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "Scientists discovered 3% of people have 'Wealth DNA' activated. This audio program reactivates your root chakra's wealth frequency in 7 minutes. NASA research + ancient Egyptian knowledge.",
+    image:
+      "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 39,
     category: "Finance & Investing",
     categoryId: "cat_finance",
@@ -280,9 +324,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_11",
     title: "Keto Meal Plan - 28 Day Challenge",
     slug: "keto-meal-plan-28-day-challenge",
-    description: "Custom keto diet plan based on your body type, taste, and goals. Lose 10-21 lbs in 28 days. Includes 200+ recipes, shopping lists, and daily coaching emails. Nutritionist designed.",
-    image: "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "Custom keto diet plan based on your body type, taste, and goals. Lose 10-21 lbs in 28 days. Includes 200+ recipes, shopping lists, and daily coaching emails. Nutritionist designed.",
+    image:
+      "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 37,
     category: "Health & Fitness",
     categoryId: "cat_health",
@@ -300,9 +348,13 @@ export const mockProducts: MockProduct[] = [
     id: "prod_12",
     title: "Agency Growth Secrets - $30k/month",
     slug: "agency-growth-secrets-30k-month",
-    description: "How I scaled my SMMA to $30k/month in 6 months with cold email. Includes 5000+ lead list, scripts, proposal templates, and case study teardown. Perfect for beginners who want clients fast.",
-    image: "https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800",
-    images: ["https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800"],
+    description:
+      "How I scaled my SMMA to $30k/month in 6 months with cold email. Includes 5000+ lead list, scripts, proposal templates, and case study teardown. Perfect for beginners who want clients fast.",
+    image:
+      "https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800",
+    images: [
+      "https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800",
+    ],
     price: 147,
     category: "Business & Marketing",
     categoryId: "cat_business",

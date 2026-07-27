@@ -10,7 +10,9 @@
     "build": "next build",
     "postinstall": "prisma generate || true",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "import:bulk": "tsx scripts/import-products.ts",
+    "import:bulk:clear": "tsx scripts/import-products.ts --clear"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
