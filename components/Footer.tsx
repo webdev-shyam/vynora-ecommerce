@@ -21,8 +21,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-4 bg-blue-200 rounded-lg p-2">
-              <img className="h-20 w-80" src="./assets/logo.svg" alt="" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-linear-to-brrom-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                <span className="font-black text-white text-lg tracking-tighter">
+                  V
+                </span>
+              </div>
+              <div className="leading-tight">
+                <span className="font-bold text-xl tracking-tight text-white">
+                  Vynora
+                </span>
+                <span className="block text-[10px] tracking-[0.2em] text-gray-400 uppercase">
+                  Market • Digital
+                </span>
+              </div>
             </div>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
               Vynora Digital is your trusted destination for curated digital
@@ -162,7 +174,7 @@ export default function Footer() {
                 placeholder="Enter your email address"
                 className="w-full px-4 py-2.5 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-500 text-sm focus:outline-none focus:border-blue-600"
               />
-              <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-lg font-medium">
+              <Button className="w-full bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-lg font-medium">
                 Subscribe
               </Button>
             </div>

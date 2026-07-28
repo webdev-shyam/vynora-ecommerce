@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, Menu, X, LayoutDashboard, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import ThemeToggle from "@/components/ThemeToggle";
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,7 +19,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-950/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -85,22 +85,19 @@ export default function Navigation() {
 
           {/* Right Navigation */}
           <div className="flex items-center space-x-2">
-            <Link href="/admin" className="hidden md:block">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="gap-1.5 text-gray-600"
-              >
-                <LayoutDashboard className="h-4 w-4" />
-                Admin
-              </Button>
-            </Link>
-
             <Link href="/shop">
-              <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full px-5 text-sm font-semibold">
+              <Button className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full px-5 text-sm font-semibold">
                 Explore Catalog
               </Button>
             </Link>
+            <div className="flex items-center space-x-2">
+              <ThemeToggle />
+              <Link href="/shop" className="hidden md:block">
+                <Button className="bg-gray-900 hover:bg-black dark:bg-black text-white dark:text-white rounded-full px-6">
+                  Explore
+                </Button>
+              </Link>
+            </div>
 
             {/* Mobile Menu Button */}
             <Button
@@ -174,14 +171,6 @@ export default function Navigation() {
                 className="text-gray-700 hover:text-blue-600 font-medium py-1.5"
               >
                 Contact
-              </Link>
-              <Link
-                href="/admin"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-blue-600 font-medium py-1.5 flex items-center gap-2"
-              >
-                <LayoutDashboard className="h-4 w-4" />
-                Admin Dashboard
               </Link>
 
               <div className="pt-3 border-t border-gray-100">

@@ -1,19 +1,31 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { getProductBySlug, getRelatedProducts, getProducts } from '@/lib/queries';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Star, ExternalLink, ShieldCheck, Zap, ArrowLeft, CheckCircle2 } from 'lucide-react';
-import ProductCard from '@/components/ProductCard';
-import Footer from '@/components/Footer';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import {
+  getProductBySlug,
+  getRelatedProducts,
+  getProducts,
+} from "@/lib/queries";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  Star,
+  ExternalLink,
+  ShieldCheck,
+  Zap,
+  ArrowLeft,
+  CheckCircle2,
+} from "lucide-react";
+import ProductCard from "@/components/ProductCard";
+import Footer from "@/components/Footer";
 
 type Props = {
   params: { slug: string };
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // Cache for 1 hour, serve from Vercel Edge
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   try {
@@ -27,7 +39,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = (await getProductBySlug(params.slug)) as any;
   if (!product) {
-    return { title: 'Product Not Found' };
+    return { title: "Product Not Found" };
   }
   return {
     title: `${product.title} | Vynora Digital`,
@@ -36,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: product.title,
       description: product.description.slice(0, 160),
       images: [product.image],
-      type: 'website',
+      type: "website",
     },
   };
 }
@@ -48,7 +60,11 @@ export default async function ProductPage({ params }: Props) {
     notFound();
   }
 
-  const related = (await getRelatedProducts(product.slug, product.category, 4)) as any[];
+  const related = (await getRelatedProducts(
+    product.slug,
+    product.category,
+    4,
+  )) as any[];
 
   return (
     <div className="min-h-screen bg-white">
@@ -67,7 +83,7 @@ export default async function ProductPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Images */}
             <div className="space-y-4">
-              <div className="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden border">
+              <div className="aspect-4/3 bg-gray-100 rounded-2xl overflow-hidden border">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -79,7 +95,7 @@ export default async function ProductPage({ params }: Props) {
                   {product.images.map((img: string, i: number) => (
                     <div
                       key={i}
-                      className="w-20 h-20 rounded-xl overflow-hidden border-2 border-gray-200 flex-shrink-0"
+                      className="w-20 h-20 rounded-xl overflow-hidden border-2 border-gray-200 shrink-0"
                     >
                       <img
                         src={img}
@@ -101,7 +117,9 @@ export default async function ProductPage({ params }: Props) {
                   <div>
                     <Zap className="h-6 w-6 mx-auto mb-1 text-blue-600" />
                     <div className="text-xs font-medium">Instant Access</div>
-                    <div className="text-[11px] text-gray-500">Digital Delivery</div>
+                    <div className="text-[11px] text-gray-500">
+                      Digital Delivery
+                    </div>
                   </div>
                   <div>
                     <CheckCircle2 className="h-6 w-6 mx-auto mb-1 text-purple-600" />
@@ -129,7 +147,7 @@ export default async function ProductPage({ params }: Props) {
                     {product.niche}
                   </Badge>
                   {product.featured && (
-                    <Badge className="bg-gradient-to-r from-blue-600 to-indigo-600">
+                    <Badge className="bg-linear-to-r from-blue-600 to-indigo-600">
                       Featured
                     </Badge>
                   )}
@@ -144,15 +162,18 @@ export default async function ProductPage({ params }: Props) {
                         key={i}
                         className={`h-4 w-4 ${
                           i < Math.floor(product.rating)
-                            ? 'fill-yellow-400 text-yellow-400'
-                            : 'text-gray-300'
+                            ? "fill-yellow-400 text-yellow-400"
+                            : "text-gray-300"
                         }`}
                       />
                     ))}
                   </div>
-                  <span className="text-sm font-medium">{product.rating} rating</span>
+                  <span className="text-sm font-medium">
+                    {product.rating} rating
+                  </span>
                   <span className="text-sm text-gray-500">
-                    • {product.reviewsCount?.toLocaleString() || '1,200+'} customer reviews
+                    • {product.reviewsCount?.toLocaleString() || "1,200+"}{" "}
+                    customer reviews
                   </span>
                 </div>
               </div>
@@ -161,7 +182,9 @@ export default async function ProductPage({ params }: Props) {
               <Card className="p-6 bg-gray-50 border-gray-200">
                 <div className="flex items-end justify-between mb-5">
                   <div>
-                    <div className="text-sm text-gray-500 mb-1">One-time payment</div>
+                    <div className="text-sm text-gray-500 mb-1">
+                      One-time payment
+                    </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-4xl font-bold text-gray-900">
                         ${product.price}
@@ -188,14 +211,16 @@ export default async function ProductPage({ params }: Props) {
                 >
                   <Button
                     size="lg"
-                    className="w-full h-14 text-base font-bold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/20 rounded-xl"
+                    className="w-full h-14 text-base font-bold bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/20 rounded-xl"
                   >
                     Get Product – ${product.price}
                     <ExternalLink className="ml-2 h-5 w-5" />
                   </Button>
                 </a>
                 <p className="text-[11px] text-center text-gray-500 mt-3">
-                  You will be redirected to the secure official checkout. Instant digital delivery after payment. 60-day money-back guarantee.
+                  You will be redirected to the secure official checkout.
+                  Instant digital delivery after payment. 60-day money-back
+                  guarantee.
                 </p>
 
                 <div className="mt-5 pt-5 border-t border-gray-200 grid grid-cols-2 gap-3 text-xs">
@@ -219,7 +244,9 @@ export default async function ProductPage({ params }: Props) {
               </Card>
 
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">About this product</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">
+                  About this product
+                </h3>
                 <div className="prose prose-sm max-w-none text-gray-600 leading-relaxed whitespace-pre-line">
                   {product.description}
                 </div>
