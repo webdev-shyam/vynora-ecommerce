@@ -36,7 +36,7 @@ export default function Hero() {
             <Link href="/shop">
               <Button
                 size="lg"
-                className="text-base px-8 py-6 bg-gray-900 hover:bg-black dark:bg-white dark:text-black dark:hover:bg-gray-100 shadow-lg rounded-full group"
+                className="text-base px-8 py-6 bg-gray-900 hover:bg-black text-white dark:bg-white dark:text-black dark:hover:bg-gray-100  shadow-lg rounded-full group"
               >
                 Shop Now
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
