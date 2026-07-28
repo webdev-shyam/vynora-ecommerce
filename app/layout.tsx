@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: {
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Navigation />
           {children}
           <Toaster />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
