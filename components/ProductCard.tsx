@@ -29,7 +29,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col h-full border-gray-200 dark:border-gray-800 hover:border-blue-200 bg-white dark:bg-gray-900">
       <div className="relative">
         <Link href={`/product/${product.slug}`}>
-          <div className="relative aspect-[4/3] bg-gray-100 dark:bg-gray-800 overflow-hidden">
+          <div className="relative aspect-4/3g-gray-100 dark:bg-gray-800 overflow-hidden">
             <Image
               src={product.image}
               alt={product.title}
@@ -81,12 +81,12 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <Link href={`/product/${product.slug}`} className="group/title">
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover/title:text-blue-600 dark:group-hover/title:text-blue-400 transition-colors min-h-[48px]">
+          <h3 className="font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover/title:text-blue-600 dark:group-hover/title:text-blue-400 transition-colors min-h-12">
             {product.title}
           </h3>
         </Link>
 
-        <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-4 min-h-[40px]">
+        <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-4 min-h-10">
           {product.description.split("\n")[0].slice(0, 120)}...
         </p>
 

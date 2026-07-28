@@ -6,8 +6,15 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata = {
-  title: "Vynora Market",
-  description: "Premium Digital Products",
+  title: {
+    default: "Vynora Market - Premium Digital Products",
+    template: "%s | Vynora Market",
+  },
+  description: "...",
+  metadataBase: new URL("https://www.vynoramarket.me"),
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
