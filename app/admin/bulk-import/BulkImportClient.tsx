@@ -42,13 +42,18 @@ export default function BulkImportClient() {
     }
     try {
       const parsed = JSON.parse(customJson);
-      if (!Array.isArray(parsed)) throw new Error("JSON must be an array");
+      // Support array, {products: [...]}, or single object
+      const itemsToSubmit = Array.isArray(parsed)
+        ? parsed
+        : Array.isArray(parsed?.products)
+        ? parsed.products
+        : [parsed];
 
       setLoading(true);
       const res = await fetch("/api/products/bulk", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ products: parsed, deleteExisting }),
+        body: JSON.stringify({ products: itemsToSubmit, deleteExisting }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed");
@@ -143,30 +148,24 @@ export default function BulkImportClient() {
 
       <Card className="p-6 bg-white">
         <h2 className="text-lg font-semibold mb-3">
-          Advanced: Bulk Paste JSON
+          Advanced: Bulk Paste JSON (Standard or Extractor Format)
         </h2>
         <p className="text-sm text-gray-600 mb-3">
-          Have more products? Paste a JSON array with same fields as above
-          (title, slug, description, image, price, category, niche,
-          affiliateUrl, commission, rating, featured, tags).
+          Paste standard JSON or AI Extractor output JSON format (supporting markdown URLs like <code>[url](url)</code>, aliases like <code>productID</code>, <code>productDescription</code>, <code>productImage</code>, <code>affiliateURL</code>, string ratings like <code>"4.6"</code>, brand/category, etc.).
         </p>
         <Textarea
           value={customJson}
           onChange={(e) => setCustomJson(e.target.value)}
           placeholder={`[
   {
-    "title": "My Product",
-    "slug": "my-product",
-    "description": "...",
-    "image": "https://...",
-    "price": 47,
-    "category": "Business & Marketing",
-    "niche": "AI Tools",
-    "affiliateUrl": "https://...#aff=ganeshyam_verma",
-    "commission": 50,
-    "rating": 4.8,
-    "featured": true,
-    "tags": ["ai"]
+    "productID": "Joseph's Well",
+    "productDescription": "[https://josephswell.com](https://josephswell.com)",
+    "productImage": "[https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg](https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg)",
+    "affiliateURL": "[https://josephswell.com/ref/123](https://josephswell.com/ref/123)",
+    "price": "$47.00",
+    "rating": "4.8",
+    "brand": "Health & Fitness",
+    "niche": "Supplements"
   }
 ]`}
           rows={10}
@@ -186,16 +185,15 @@ export default function BulkImportClient() {
       <Card className="p-4 bg-blue-50 border-blue-200 text-sm text-blue-800">
         <strong>How automation works:</strong>
         <br />
-        1. Products defined in <code>lib/bulkProducts.ts</code>
+        1. Products defined in <code>lib/bulkProducts.ts</code> or via custom JSON paste
         <br />
-        2. API <code>/api/products/bulk</code> loops and creates via Prisma
+        2. Extractor JSON format with markdown links <code>[url](url)</code> is automatically normalized
         <br />
-        3. If slug already exists, it skips (no duplicate)
+        3. API <code>/api/products/bulk</code> loops and creates via Prisma
         <br />
-        4. Next time you get new affiliate or product links, just add them to{" "}
-        <code>lib/bulkProducts.ts</code> and click Import again
+        4. If slug already exists, it skips (no duplicate)
         <br />
-        5. Or use custom JSON paste for one-off bulk
+        5. Use custom JSON paste for AI extractor outputs (e.g. Joseph's Well format)
       </Card>
     </div>
   );

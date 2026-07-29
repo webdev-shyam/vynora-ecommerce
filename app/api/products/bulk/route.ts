@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { getPrismaClient } from "@/lib/prisma";
 import { bulkProducts } from "@/lib/bulkProducts";
+import { normalizeProduct } from "@/lib/normalizeProduct";
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -15,12 +16,24 @@ export async function POST(req: NextRequest) {
       { status: 500 },
     );
   try {
-    const body = await req.json().catch(() => ({}));
-    const productsToImport =
-      Array.isArray(body.products) && body.products.length > 0
-        ? body.products
-        : bulkProducts;
-    const deleteExisting = body.deleteExisting === true;
+    const body = await req.json().catch(() => ([]));
+    let rawItems: any[] = [];
+    if (Array.isArray(body)) {
+      rawItems = body;
+    } else if (body && Array.isArray(body.products)) {
+      rawItems = body.products;
+    } else if (body && typeof body === 'object' && Object.keys(body).length > 0) {
+      if (body.title || body.productTitle || body.name || body.productID || body.affiliateURL || body.productImage || body.productDescription) {
+        rawItems = [body];
+      } else {
+        rawItems = bulkProducts;
+      }
+    } else {
+      rawItems = bulkProducts;
+    }
+
+    const productsToImport = rawItems.map(normalizeProduct);
+    const deleteExisting = body?.deleteExisting === true;
     if (deleteExisting) await prisma.product.deleteMany({});
     let created = 0,
       skipped = 0;
