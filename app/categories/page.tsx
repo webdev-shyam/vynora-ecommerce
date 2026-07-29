@@ -1,4 +1,5 @@
-import { getCategories } from '@/lib/queries';
+import { getCategories, getProducts } from '@/lib/queries';
+import { mockCategories, mockProducts } from '@/lib/mockData';
 import CategoriesComponent from '@/components/Categories';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -6,17 +7,81 @@ import { ArrowLeft } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
-export default async function CategoriesPage() {
-  const categories = await getCategories() as any[];
+// Fallback: General E-Commerce category for when Supabase is empty
+const generalECommerceCategory = {
+  id: 'cat_general_ecommerce',
+  name: 'General E-Commerce',
+  slug: 'general-ecommerce',
+  description: 'Popular digital products, tools, and courses across all niches',
+  image: 'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=600',
+};
 
-  const display = categories.map((c: any) => ({
-    id: c.id,
-    name: c.name,
-    slug: c.slug,
-    description: c.description,
-    image: c.image,
-    count: c._count?.products ?? 0,
-  }));
+export default async function CategoriesPage() {
+  let categories = await getCategories() as any[];
+
+  // Fallback to mock categories if DB returns empty
+  if (!categories || categories.length === 0) {
+    categories = mockCategories.map((c) => ({
+      ...c,
+      _count: {
+        products: mockProducts.filter((p) => p.categoryId === c.id).length,
+      },
+    })) as any[];
+  }
+
+  // Collect distinct product categories from mock data that aren't already represented
+  const dbCategoryNames = new Set(categories.map((c: any) => c.name.toLowerCase()));
+  const distinctMockCategories = mockProducts
+    .filter((p) => !dbCategoryNames.has(p.category.toLowerCase()))
+    .reduce((acc, p) => {
+      if (!acc.find((c) => c.name.toLowerCase() === p.category.toLowerCase())) {
+        const mockCat = mockCategories.find(
+          (mc) => mc.name.toLowerCase() === p.category.toLowerCase()
+        );
+        acc.push({
+          id: mockCat?.id || `cat_mock_${p.category.toLowerCase().replace(/\s+/g, '_')}`,
+          name: p.category,
+          slug: mockCat?.slug || p.category.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-'),
+          description: mockCat?.description || `Digital products in ${p.category}`,
+          image: mockCat?.image || 'https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=600',
+        });
+      }
+      return acc;
+    }, [] as any[]);
+
+  // Merge: add General E-Commerce + any distinct mock categories not already present
+  const existingSlugs = new Set([...categories, ...distinctMockCategories].map((c: any) => c.slug));
+  const extras: any[] = [];
+  if (!existingSlugs.has(generalECommerceCategory.slug)) {
+    extras.push(generalECommerceCategory);
+  }
+  for (const mc of distinctMockCategories) {
+    if (!existingSlugs.has(mc.slug)) {
+      extras.push(mc);
+    }
+  }
+
+  const allCategories = [...categories, ...extras];
+
+  // For each category, compute product count: merge DB count + mock count for accuracy
+  const display = allCategories.map((c: any) => {
+    const dbCount = c._count?.products ?? 0;
+    const mockCount = mockProducts.filter(
+      (p) =>
+        p.category.toLowerCase() === c.name.toLowerCase() ||
+        p.categoryId === c.id
+    ).length;
+    // Use the larger of the two counts (DB or mock) to ensure non-zero display
+    const count = Math.max(dbCount, mockCount);
+    return {
+      id: c.id,
+      name: c.name,
+      slug: c.slug,
+      description: c.description,
+      image: c.image,
+      count,
+    };
+  });
 
   return (
     <div className="min-h-screen bg-white">
