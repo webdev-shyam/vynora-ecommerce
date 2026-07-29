@@ -26,6 +26,9 @@ export async function getCategories() {
         orderBy: { name: "asc" },
         include: { _count: { select: { products: true } } },
       });
+      if (!cats || cats.length === 0) {
+        throw new Error("Empty categories in Supabase DB, falling back to mock");
+      }
       return cats;
     },
     mockCategories.map((c) => ({
@@ -44,7 +47,11 @@ export async function getCategoryBySlug(slug: string) {
     async () => {
       const prisma = getPrismaClient();
       if (!prisma) throw new Error("No prisma");
-      return await prisma.category.findUnique({ where: { slug } });
+      const cat = await prisma.category.findUnique({ where: { slug } });
+      if (!cat) {
+        throw new Error("Category not found in Supabase DB, falling back to mock");
+      }
+      return cat;
     },
     mockCategories.find((c) => c.slug === slug) as any,
   );
@@ -116,7 +123,9 @@ export async function getProducts(filters: ProductFilters = {}) {
         take: take || undefined,
         include: { Category: true },
       });
-
+      if (!products || products.length === 0) {
+        throw new Error("Empty products in Supabase DB, falling back to mock");
+      }
       return products;
     },
     (() => {
@@ -190,6 +199,9 @@ export async function getProductBySlug(slug: string) {
         where: { slug },
         include: { Category: true },
       });
+      if (!product) {
+        throw new Error("Product not found in Supabase DB, falling back to mock");
+      }
       return product;
     },
     mockProducts.find((p) => p.slug === slug) as any,
@@ -218,6 +230,9 @@ export async function getRelatedProducts(
         take,
         orderBy: { rating: "desc" },
       });
+      if (!products || products.length === 0) {
+        throw new Error("Empty related products in Supabase DB, falling back to mock");
+      }
       return products;
     },
     mockProducts
