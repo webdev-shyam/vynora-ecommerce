@@ -31,7 +31,7 @@ export default function CookiePolicyPage() {
 
             <div className="prose prose-amber max-w-none text-gray-600 space-y-6">
               <p className="text-lg leading-relaxed">
-                This Cookie Policy explains how <strong>Vynora Digital Marketplace</strong> uses cookies and similar tracking technologies when you visit our website at <span className="text-amber-600">vynora.digital</span>.
+                This Cookie Policy explains how <strong>Vynora Digital Marketplace</strong> uses cookies and similar tracking technologies when you visit our website at <span className="text-amber-600">vynoramarket.me</span>.
               </p>
 
               <h2 className="text-xl font-semibold text-gray-900 pt-4 border-t border-gray-100 flex items-center gap-2">
@@ -99,8 +99,8 @@ export default function CookiePolicyPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 text-sm">
                 <p className="font-semibold text-gray-900">Vynora Digital Support</p>
-                <p>Email: <a href="mailto:support@vynora.digital" className="text-amber-600 hover:underline">support@vynora.digital</a></p>
-                <p>Contact Page: <Link href="/contact" className="text-amber-600 hover:underline">vynora.digital/contact</Link></p>
+                <p>Email: <a href="mailto:support@vynoramarket.me" className="text-amber-600 hover:underline">support@vynoramarket.me</a></p>
+                <p>Contact Page: <Link href="/contact" className="text-amber-600 hover:underline">vynoramarket.me/contact</Link></p>
               </div>
             </div>
           </div>

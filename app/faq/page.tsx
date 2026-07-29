@@ -73,7 +73,7 @@ export default function FAQPage() {
                     What if I didn&apos;t receive the confirmation email?
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-600 leading-relaxed">
-                    Please check your email spam/junk folder. If you still cannot locate it within 10 minutes, contact our support team at <a href="mailto:support@vynora.digital" className="text-blue-600 hover:underline">support@vynora.digital</a> with your purchase details and we will resend your access links right away.
+                    Please check your email spam/junk folder. If you still cannot locate it within 10 minutes, contact our support team at <a href="mailto:support@vynoramarket.me" className="text-blue-600 hover:underline">support@vynoramarket.me</a> with your purchase details and we will resend your access links right away.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>

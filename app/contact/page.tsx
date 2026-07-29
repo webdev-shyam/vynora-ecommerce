@@ -85,10 +85,10 @@ export default function ContactPage() {
                       Reach our dedicated customer care team directly.
                     </p>
                     <a
-                      href="mailto:support@vynora.digital"
+                      href="mailto:support@vynoramarket.me"
                       className="text-sm font-semibold text-blue-600 hover:underline"
                     >
-                      support@vynora.digital
+                      support@vynoramarket.me
                     </a>
                   </div>
                 </div>

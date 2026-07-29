@@ -62,7 +62,7 @@ export default function LoginForm({ callbackUrl }: Props) {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@vynora.digital"
+              placeholder="admin@vynoramarket.me"
               className="pl-10"
             />
           </div>

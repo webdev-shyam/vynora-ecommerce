@@ -31,7 +31,7 @@ export default function PrivacyPage() {
 
             <div className="prose prose-blue max-w-none text-gray-600 space-y-6">
               <p className="text-lg leading-relaxed">
-                At <strong>Vynora Digital Marketplace</strong> (&quot;Vynora&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), we respect your privacy and are committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at <span className="text-blue-600">vynora.digital</span>.
+                At <strong>Vynora Digital Marketplace</strong> (&quot;Vynora&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;), we respect your privacy and are committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at <span className="text-blue-600">vynoramarket.me</span>.
               </p>
 
               <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl text-sm text-blue-900 flex items-start gap-3">
@@ -108,8 +108,8 @@ export default function PrivacyPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 text-sm">
                 <p className="font-semibold text-gray-900">Vynora Digital Support Team</p>
-                <p>Email: <a href="mailto:privacy@vynora.digital" className="text-blue-600 hover:underline">privacy@vynora.digital</a></p>
-                <p>Website: <Link href="/contact" className="text-blue-600 hover:underline">vynora.digital/contact</Link></p>
+                <p>Email: <a href="mailto:contact@vynoramarket.me" className="text-blue-600 hover:underline">contact@vynoramarket.me</a></p>
+                <p>Website: <Link href="/contact" className="text-blue-600 hover:underline">vynoramarket.me/contact</Link></p>
               </div>
             </div>
           </div>

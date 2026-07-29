@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getProducts, getCategories } from '@/lib/queries';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://vynora.digital';
+  const baseUrl = 'https://vynoramarket.me';
 
   const staticRoutes: MetadataRoute.Sitemap = [
     '',

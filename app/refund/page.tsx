@@ -85,9 +85,9 @@ export default function RefundPolicyPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 text-sm">
                 <p className="font-semibold text-gray-900">Vynora Digital Customer Care</p>
-                <p>Email: <a href="mailto:support@vynora.digital" className="text-emerald-600 hover:underline">support@vynora.digital</a></p>
+                <p>Email: <a href="mailto:support@vynoramarket.me" className="text-emerald-600 hover:underline">support@vynoramarket.me</a></p>
                 <p>Digistore24 Support Portal: <a href="https://www.digistore24.com" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">digistore24.com/support</a></p>
-                <p>Contact Us Page: <Link href="/contact" className="text-emerald-600 hover:underline">vynora.digital/contact</Link></p>
+                <p>Contact Us Page: <Link href="/contact" className="text-emerald-600 hover:underline">vynoramarket.me/contact</Link></p>
               </div>
             </div>
           </div>

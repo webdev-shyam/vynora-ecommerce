@@ -31,7 +31,7 @@ export default function TermsPage() {
 
             <div className="prose prose-indigo max-w-none text-gray-600 space-y-6">
               <p className="text-lg leading-relaxed">
-                Welcome to <strong>Vynora Digital Marketplace</strong> (&quot;Vynora&quot;, &quot;we&quot;, &quot;us&quot;). These Terms of Service (&quot;Terms&quot;) govern your access to and use of our website at <span className="text-indigo-600">vynora.digital</span> and all related services, content, and features.
+                Welcome to <strong>Vynora Digital Marketplace</strong> (&quot;Vynora&quot;, &quot;we&quot;, &quot;us&quot;). These Terms of Service (&quot;Terms&quot;) govern your access to and use of our website at <span className="text-indigo-600">vynoramarket.me</span> and all related services, content, and features.
               </p>
 
               <div className="p-4 bg-indigo-50 border border-indigo-100 rounded-xl text-sm text-indigo-900 flex items-start gap-3">
@@ -97,8 +97,8 @@ export default function TermsPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-xl border border-gray-200 text-sm">
                 <p className="font-semibold text-gray-900">Vynora Digital Legal Department</p>
-                <p>Email: <a href="mailto:terms@vynora.digital" className="text-indigo-600 hover:underline">terms@vynora.digital</a></p>
-                <p>Website: <Link href="/contact" className="text-indigo-600 hover:underline">vynora.digital/contact</Link></p>
+                <p>Email: <a href="mailto:contact@vynoramarket.me" className="text-indigo-600 hover:underline">contact@vynoramarket.me</a></p>
+                <p>Website: <Link href="/contact" className="text-indigo-600 hover:underline">vynoramarket.me/contact</Link></p>
               </div>
             </div>
           </div>
