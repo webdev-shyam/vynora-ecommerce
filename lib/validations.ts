@@ -6,12 +6,13 @@ export const productSchema = z.object({
     .string()
     .min(3)
     .regex(/^[a-z0-9-]+$/, "Slug must be lowercase, hyphenated"),
-  description: z.string().min(20, "Description at least 20 chars"),
+  description: z.string().min(5, "Description must be at least 5 characters"),
   image: z.string().url("Must be valid URL"),
-  price: z.coerce.number().positive(),
-  category: z.string().min(2),
+  price: z.coerce.number().min(0),
+  category: z.string().min(1),
   categoryId: z.string().optional().nullable(),
-  niche: z.string().min(2),
+  niche: z.string().min(1),
+  affiliateUrl: z.string().url("Must be valid URL"),
   commission: z.coerce.number().min(0).max(100),
   rating: z.coerce.number().min(0).max(5).default(4.5),
   featured: z.boolean().default(false),

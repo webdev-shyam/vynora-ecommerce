@@ -69,9 +69,9 @@ export default function BulkImportClient() {
           One-Click Import (Your 9 Products)
         </h2>
         <p className="text-sm text-gray-600 mb-4">
-          Click below to automatically import all 9 products you selected from
-          Digistore24 with your <code>ganeshyam_verma</code> affiliate ID. Takes
-          3 seconds.
+          Click below to automatically import the products defined in the bulk
+          JSON list, using each product's own affiliate or product URL. Takes 3
+          seconds.
         </p>
 
         <div className="grid md:grid-cols-2 gap-3 mb-4">
@@ -192,7 +192,7 @@ export default function BulkImportClient() {
         <br />
         3. If slug already exists, it skips (no duplicate)
         <br />
-        4. Next time you get new Digistore24 links, just add to{" "}
+        4. Next time you get new affiliate or product links, just add them to{" "}
         <code>lib/bulkProducts.ts</code> and click Import again
         <br />
         5. Or use custom JSON paste for one-off bulk
