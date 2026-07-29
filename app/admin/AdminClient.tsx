@@ -40,7 +40,7 @@ const emptyProduct: Partial<Product> = {
   price: 49,
   category: 'Health & Fitness',
   niche: 'Health',
-  affiliateUrl: 'https://www.digistore24.com/product/123456',
+  affiliateUrl: 'https://example.com/product/123456',
   commission: 50,
   rating: 4.5,
   featured: false,
@@ -187,8 +187,9 @@ export default function AdminClient({ initialProducts, initialCategories }: { in
                   <Input value={editing.image || ''} onChange={(e) => setEditing({ ...editing, image: e.target.value })} placeholder="https://images.pexels.com/..." />
                 </div>
                 <div className="space-y-2">
-                  <Label>Affiliate URL * (Digistore24)</Label>
-                  <Input value={editing.affiliateUrl || ''} onChange={(e) => setEditing({ ...editing, affiliateUrl: e.target.value })} placeholder="https://www.digistore24.com/product/..." />
+                  <Label>Product URL * (any affiliate link allowed)</Label>
+                  <Input value={editing.affiliateUrl || ''} onChange={(e) => setEditing({ ...editing, affiliateUrl: e.target.value })} placeholder="https://example.com/product/..." />
+                  <p className="text-xs text-gray-500">Use any valid affiliate or product URL, including Tubemagic, Heiko Boos, Advanced Bionutritionals, Digistore24, or other networks.</p>
                 </div>
 
                 <div className="space-y-2">
