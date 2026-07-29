@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Search, Menu, X, LayoutDashboard, Sparkles } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 export default function Navigation() {
@@ -23,9 +23,14 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2 shrink-0">
             <div className="flex items-center gap-2">
-              <img className="h-20 w-40" src="./assets/logo.svg" alt="" />
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                <span className="font-black text-white text-lg tracking-tighter">V</span>
+              </div>
+              <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white hidden sm:inline">
+                Vynora
+              </span>
             </div>
           </Link>
 
@@ -84,20 +89,13 @@ export default function Navigation() {
           </div>
 
           {/* Right Navigation */}
-          <div className="flex items-center space-x-2">
-            <Link href="/shop">
+          <div className="flex items-center space-x-2 shrink-0">
+            <Link href="/shop" className="hidden sm:inline-flex">
               <Button className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full px-5 text-sm font-semibold">
                 Explore Catalog
               </Button>
             </Link>
-            <div className="flex items-center space-x-2">
-              <ThemeToggle />
-              <Link href="/shop" className="hidden md:block">
-                <Button className="bg-gray-900 hover:bg-black dark:bg-black text-white dark:text-white rounded-full px-6">
-                  Explore
-                </Button>
-              </Link>
-            </div>
+            <ThemeToggle />
 
             {/* Mobile Menu Button */}
             <Button
