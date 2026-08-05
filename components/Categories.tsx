@@ -71,16 +71,16 @@ export default function Categories({ categories }: CategoriesProps) {
     categories && categories.length > 0 ? categories : fallbackCategories;
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <div className="inline-block px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-sm font-medium text-blue-700 mb-4">
+          <div className="inline-block px-4 py-1.5 bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900/50 rounded-full text-sm font-medium text-indigo-700 dark:text-indigo-300 mb-4">
             Explore Your Needs
           </div>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
             Browse by Category
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Discover a wide range of products across various categories. Find
             the perfect solution for your needs, whether it&apos;s health, finance,
             business, or personal growth.
@@ -90,7 +90,7 @@ export default function Categories({ categories }: CategoriesProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {display.map((category) => (
             <Link key={category.id} href={`/categories/${category.slug}`}>
-              <Card className="group overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer border-gray-200 hover:border-blue-200 h-full">
+              <Card className="group overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer border-gray-200 dark:border-gray-800 hover:border-indigo-200 dark:hover:border-indigo-800 h-full">
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={
@@ -102,7 +102,7 @@ export default function Categories({ categories }: CategoriesProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                    <h3 className="text-xl font-bold mb-1 group-hover:text-blue-200 transition-colors">
+                    <h3 className="text-xl font-bold mb-1 group-hover:text-indigo-200 transition-colors">
                       {category.name}
                     </h3>
                     <p className="text-sm text-gray-200 group-hover:text-gray-100 transition-colors line-clamp-1">

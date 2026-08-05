@@ -16,6 +16,17 @@ async function tryDb<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
   }
 }
 
+// Resolve a category slug (or name) to the actual category name for DB queries
+function resolveCategoryName(categoryInput: string): string | null {
+  // Check if it's a slug from mock data
+  const mockCat = mockCategories.find(
+    (c) =>
+      c.slug.toLowerCase() === categoryInput.toLowerCase() ||
+      c.name.toLowerCase() === categoryInput.toLowerCase()
+  );
+  return mockCat ? mockCat.name : categoryInput;
+}
+
 // Categories
 export async function getCategories() {
   return tryDb(
@@ -70,6 +81,9 @@ export type ProductFilters = {
 export async function getProducts(filters: ProductFilters = {}) {
   const { q, category, niche, featured, sort = "newest", take } = filters;
 
+  // Resolve category: accept slug OR name, normalize for DB query
+  const resolvedCategory = category ? resolveCategoryName(category) : null;
+
   return tryDb(
     async () => {
       const prisma = getPrismaClient();
@@ -86,8 +100,35 @@ export async function getProducts(filters: ProductFilters = {}) {
         ];
       }
 
-      if (category) {
-        where.category = { contains: category, mode: "insensitive" };
+      if (resolvedCategory) {
+        // Try both: match by categoryId (FK) OR by category name (denormalized string)
+        const matchingCategory = await prisma.category.findFirst({
+          where: {
+            OR: [
+              { slug: { equals: category, mode: "insensitive" } },
+              { name: { equals: resolvedCategory, mode: "insensitive" } },
+            ],
+          },
+          select: { id: true },
+        });
+
+        if (matchingCategory) {
+          // Use categoryId relation for accurate matching
+          where.OR = where.OR
+            ? [
+                ...where.OR,
+                { categoryId: matchingCategory.id },
+                { category: { contains: resolvedCategory, mode: "insensitive" } },
+              ]
+            : [
+                { categoryId: matchingCategory.id },
+                { category: { contains: resolvedCategory, mode: "insensitive" } },
+              ];
+          // Remove the simple where.category if we're using OR
+        } else {
+          // Fallback to name-based contains search
+          where.category = { contains: resolvedCategory, mode: "insensitive" };
+        }
       }
 
       if (niche) {
@@ -144,10 +185,13 @@ export async function getProducts(filters: ProductFilters = {}) {
       }
       if (category) {
         const catLower = category.toLowerCase();
+        // Resolve slug to name for mock matching
+        const catName = resolveCategoryName(category);
         filtered = filtered.filter(
           (p) =>
-            p.category.toLowerCase().includes(catLower) ||
+            p.category.toLowerCase() === (catName || category).toLowerCase() ||
             p.categoryId === category ||
+            p.category.toLowerCase().includes(catLower) ||
             mockCategories.find((c) => c.slug === category)?.name ===
               p.category ||
             mockCategories
