@@ -2,6 +2,7 @@ import { getCategoryBySlug, getProducts, getCategories } from "@/lib/queries";
 import ProductGrid from "@/components/ProductGrid";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
@@ -48,14 +49,17 @@ export default async function CategoryDetailPage({
               All Categories
             </Link>
             <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="w-full md:w-48 h-48 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
-                <img
+              <div className="w-full md:w-48 h-48 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0 relative">
+                <Image
                   src={
                     category.image ||
                     "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
                   }
                   alt={category.name}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="192px"
+                  className="object-cover"
+                  priority
                 />
               </div>
               <div>

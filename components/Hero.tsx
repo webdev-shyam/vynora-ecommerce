@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck, Zap, Clock } from "lucide-react";
 import Link from "next/link";
@@ -98,10 +99,13 @@ export default function Hero() {
 
         <div className="relative">
           <div className="relative aspect-4/3 lg:aspect-square rounded-4xl overflow-hidden bg-gray-900 shadow-2xl">
-            <img
+            <Image
               src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Digital Products"
-              className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+              priority
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
@@ -140,14 +144,16 @@ export default function Hero() {
 
           <div className="absolute -right-6 bottom-[20%] bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-100 dark:border-gray-700 hidden lg:block">
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100"
                 className="w-10 h-10 rounded-full object-cover"
                 alt="user"
+                width={40}
+                height={40}
               />
               <div>
                 <p className="font-semibold text-sm text-gray-900 dark:text-white">
-                  "Life changing!"
+                  &ldquo;Life changing!&rdquo;
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
                   Sarah - verified buyer

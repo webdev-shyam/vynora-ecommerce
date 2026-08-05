@@ -17,6 +17,7 @@ import {
   ArrowLeft,
   CheckCircle2,
 } from "lucide-react";
+import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
 
@@ -67,7 +68,7 @@ export default async function ProductPage({ params }: Props) {
   )) as any[];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-950">
       <div className="pt-20">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <Link
@@ -83,11 +84,14 @@ export default async function ProductPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Images */}
             <div className="space-y-4">
-              <div className="aspect-4/3 bg-gray-100 rounded-2xl overflow-hidden border">
-                <img
+              <div className="aspect-4/3 bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden border relative">
+                <Image
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  priority
                 />
               </div>
               {product.images && product.images.length > 1 && (
@@ -95,12 +99,15 @@ export default async function ProductPage({ params }: Props) {
                   {product.images.map((img: string, i: number) => (
                     <div
                       key={i}
-                      className="w-20 h-20 rounded-xl overflow-hidden border-2 border-gray-200 shrink-0"
+                      className="w-20 h-20 rounded-xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 shrink-0 relative"
                     >
-                      <img
+                      <Image
                         src={img}
                         alt={`${product.title} ${i + 1}`}
-                        className="w-full h-full object-cover"
+                        fill
+                        sizes="80px"
+                        className="object-cover"
+                        loading="lazy"
                       />
                     </div>
                   ))}

@@ -19,7 +19,6 @@ async function tryDb<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
   }
 }
 
-// Try DB but return empty array on failure (for list queries where 0 results is valid)
 async function tryDbList<T>(fn: () => Promise<T[]>, fallback: T[] = []): Promise<T[]> {
   if (!hasDatabase) return fallback;
   const prisma = getPrismaClient();
@@ -39,10 +38,33 @@ export async function getCategories() {
     async () => {
       const prisma = getPrismaClient();
       if (!prisma) throw new Error("No prisma");
-      return prisma.category.findMany({
+
+      const cats = await prisma.category.findMany({
         orderBy: { name: "asc" },
         include: { _count: { select: { products: true } } },
       });
+
+      // Also count products that match by category string but aren't FK-linked
+      // This handles legacy data where categoryId may be null
+      const enrichedCats = await Promise.all(
+        cats.map(async (cat) => {
+          const stringMatchCount = await prisma.product.count({
+            where: {
+              isActive: true,
+              category: { equals: cat.name, mode: "insensitive" },
+              categoryId: { not: cat.id }, // only count products NOT already linked
+            },
+          });
+          return {
+            ...cat,
+            _count: {
+              products: cat._count.products + stringMatchCount,
+            },
+          };
+        })
+      );
+
+      return enrichedCats;
     },
     mockCategories.map((c) => ({
       ...c,
@@ -98,8 +120,8 @@ export async function getProducts(filters: ProductFilters = {}): Promise<any[]> 
       ];
     }
 
-    // Category filter — look up the category record to get both id and name,
-    // then match products by categoryId (FK) OR category string field
+    // Category filter — look up category record, then match by:
+    // 1) categoryId FK, 2) category string equals name, 3) category string contains name
     if (category) {
       const matchingCat = await prisma.category.findFirst({
         where: {
@@ -112,11 +134,9 @@ export async function getProducts(filters: ProductFilters = {}): Promise<any[]> 
       });
 
       if (matchingCat) {
-        // Match by FK relation OR denormalized category name string
-        const catConditions = [
+        const catConditions: any[] = [
           { categoryId: matchingCat.id },
           { category: { equals: matchingCat.name, mode: "insensitive" } },
-          { category: { contains: matchingCat.name, mode: "insensitive" } },
         ];
         where.OR = where.OR ? [...where.OR, ...catConditions] : catConditions;
       } else {
@@ -152,9 +172,14 @@ export async function getProducts(filters: ProductFilters = {}): Promise<any[]> 
     });
   });
 
-  // If DB returned results, use them (even if empty array from a valid query)
+  // If DB returned results (or DB is available but returned []), use them
   if (dbProducts.length > 0 || hasDatabase) {
-    return dbProducts;
+    // Enrich products with proper category name from Category relation
+    return dbProducts.map((p: any) => ({
+      ...p,
+      // Use the Category relation name if available, otherwise keep the raw string
+      category: p.Category?.name || p.category,
+    }));
   }
 
   // ── Mock fallback (only when DB is unavailable) ───────────────────
@@ -206,19 +231,28 @@ export async function getProducts(filters: ProductFilters = {}): Promise<any[]> 
 }
 
 export async function getProductBySlug(slug: string) {
-  return tryDb(
+  const product = await tryDb(
     async () => {
       const prisma = getPrismaClient();
       if (!prisma) throw new Error("No prisma");
-      const product = await prisma.product.findUnique({
+      const p = await prisma.product.findUnique({
         where: { slug },
         include: { Category: true },
       });
-      if (!product) throw new Error("Product not found");
-      return product;
+      if (!p) throw new Error("Product not found");
+      return p;
     },
     mockProducts.find((p) => p.slug === slug) as any,
   );
+
+  // Enrich with Category relation name
+  if (product && (product as any).Category) {
+    return {
+      ...product,
+      category: (product as any).Category?.name || product.category,
+    };
+  }
+  return product;
 }
 
 export async function getFeaturedProducts(take = 8) {
@@ -233,18 +267,46 @@ export async function getRelatedProducts(
   const products = await tryDbList(async () => {
     const prisma = getPrismaClient();
     if (!prisma) throw new Error("No prisma");
-    return prisma.product.findMany({
+
+    // Find matching category record
+    const matchingCat = await prisma.category.findFirst({
       where: {
-        isActive: true,
-        slug: { not: currentSlug },
-        category: { contains: category, mode: "insensitive" },
+        OR: [
+          { name: { equals: category, mode: "insensitive" } },
+          { slug: { equals: category, mode: "insensitive" } },
+        ],
       },
+      select: { id: true, name: true },
+    });
+
+    const where: any = {
+      isActive: true,
+      slug: { not: currentSlug },
+    };
+
+    if (matchingCat) {
+      where.OR = [
+        { categoryId: matchingCat.id },
+        { category: { equals: matchingCat.name, mode: "insensitive" } },
+      ];
+    } else {
+      where.category = { contains: category, mode: "insensitive" };
+    }
+
+    return prisma.product.findMany({
+      where,
       take,
       orderBy: { rating: "desc" },
+      include: { Category: true },
     });
   });
 
-  if (products.length > 0 || hasDatabase) return products;
+  if (products.length > 0 || hasDatabase) {
+    return products.map((p: any) => ({
+      ...p,
+      category: p.Category?.name || p.category,
+    }));
+  }
 
   // Mock fallback
   return mockProducts

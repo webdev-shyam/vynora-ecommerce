@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 
@@ -16,59 +17,16 @@ interface CategoriesProps {
 }
 
 const fallbackCategories: CategoryDisplay[] = [
-  {
-    id: "cat_health",
-    name: "Health & Fitness",
-    slug: "health-fitness",
-    description: "Biohacking, weight loss, nutrition",
-    image: "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg",
-    count: 3,
-  },
-  {
-    id: "cat_finance",
-    name: "Finance & Investing",
-    slug: "finance-investing",
-    description: "Crypto, wealth, investing",
-    image: "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg",
-    count: 2,
-  },
-  {
-    id: "cat_business",
-    name: "Business & Marketing",
-    slug: "business-marketing",
-    description: "Marketing, agency, ecommerce",
-    image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg",
-    count: 3,
-  },
-  {
-    id: "cat_mindset",
-    name: "Mindset & Spirituality",
-    slug: "mindset-spirituality",
-    description: "Manifestation, meditation",
-    image: "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg",
-    count: 1,
-  },
-  {
-    id: "cat_relationship",
-    name: "Relationships",
-    slug: "relationships",
-    description: "Dating, love, connection",
-    image: "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg",
-    count: 2,
-  },
-  {
-    id: "cat_education",
-    name: "Education & Skills",
-    slug: "education-skills",
-    description: "Coding, AI, career",
-    image: "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg",
-    count: 1,
-  },
+  { id: "cat_health", name: "Health & Fitness", slug: "health-fitness", description: "Biohacking, weight loss, nutrition", image: "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg", count: 3 },
+  { id: "cat_finance", name: "Finance & Investing", slug: "finance-investing", description: "Crypto, wealth, investing", image: "https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg", count: 2 },
+  { id: "cat_business", name: "Business & Marketing", slug: "business-marketing", description: "Marketing, agency, ecommerce", image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg", count: 3 },
+  { id: "cat_mindset", name: "Mindset & Spirituality", slug: "mindset-spirituality", description: "Manifestation, meditation", image: "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg", count: 1 },
+  { id: "cat_relationship", name: "Relationships", slug: "relationships", description: "Dating, love, connection", image: "https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg", count: 2 },
+  { id: "cat_education", name: "Education & Skills", slug: "education-skills", description: "Coding, AI, career", image: "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg", count: 1 },
 ];
 
 export default function Categories({ categories }: CategoriesProps) {
-  const display =
-    categories && categories.length > 0 ? categories : fallbackCategories;
+  const display = categories && categories.length > 0 ? categories : fallbackCategories;
 
   return (
     <section className="py-20 bg-white dark:bg-gray-950">
@@ -92,13 +50,16 @@ export default function Categories({ categories }: CategoriesProps) {
             <Link key={category.id} href={`/categories/${category.slug}`}>
               <Card className="group overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer border-gray-200 dark:border-gray-800 hover:border-indigo-200 dark:hover:border-indigo-800 h-full">
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
+                  <Image
                     src={
                       category.image ||
                       "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg"
                     }
                     alt={category.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
