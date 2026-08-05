@@ -1,21 +1,21 @@
-import { NextResponse } from 'next/server';
 import { getPrismaClient } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
-// Convert BigInt to Number for JSON serialization
-function serialize(obj: any): any {
-  return JSON.parse(JSON.stringify(obj, (_, v) => typeof v === 'bigint' ? Number(v) : v));
+// Custom replacer for BigInt
+function stringify(obj: any): string {
+  return JSON.stringify(obj, (_, v) => (typeof v === 'bigint' ? Number(v) : v));
 }
 
 export async function GET() {
   const prisma = getPrismaClient();
   if (!prisma) {
-    return NextResponse.json({ error: 'No database connection' });
+    return new Response(stringify({ error: 'No database connection' }), {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   try {
-    // Raw SQL: get ALL distinct category strings and their counts from products table
     const productCategoryStrings = await prisma.$queryRaw`
       SELECT category, COUNT(*) as count
       FROM products
@@ -24,14 +24,12 @@ export async function GET() {
       ORDER BY count DESC
     `;
 
-    // Raw SQL: get all categories from categories table
     const categoriesTable = await prisma.$queryRaw`
       SELECT id, name, slug
       FROM categories
       ORDER BY name ASC
     `;
 
-    // Raw SQL: count products linked by category_id FK per category
     const fkCounts = await prisma.$queryRaw`
       SELECT c.id, c.name, c.slug, COUNT(p.id) as fk_count
       FROM categories c
@@ -40,7 +38,6 @@ export async function GET() {
       ORDER BY c.name ASC
     `;
 
-    // Sample products to see their actual data
     const samples = await prisma.$queryRaw`
       SELECT id, title, category, category_id
       FROM products
@@ -48,13 +45,18 @@ export async function GET() {
       LIMIT 10
     `;
 
-    return NextResponse.json(serialize({
+    return new Response(stringify({
       productCategoryStrings,
       categoriesTable,
       fkCounts,
       samples,
-    }));
+    }), {
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (e: any) {
-    return NextResponse.json({ error: e.message, stack: e.stack?.slice(0, 500) }, { status: 500 });
+    return new Response(stringify({ error: e.message }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }
