@@ -23,9 +23,9 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center mb-6">
               <img
-                src="/logo.svg"
+                src="/logo-white.svg"
                 alt="Vynora Market"
-                className="h-9 w-auto brightness-0 invert"
+                className="h-9 w-auto"
               />
             </Link>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">

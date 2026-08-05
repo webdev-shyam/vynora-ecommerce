@@ -28,12 +28,12 @@
   </g>
   <circle cx="24" cy="12" r="1.5" fill="#ffffff" opacity="0.7"/>
 
-  <!-- Text: Vynora (dark text for light backgrounds) -->
+  <!-- Text: Vynora (WHITE text for dark backgrounds) -->
   <text x="56" y="30" font-family="'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" letter-spacing="-0.5">
-    <tspan fill="#111827">Vyn</tspan><tspan fill="#6366F1">ora</tspan>
+    <tspan fill="#ffffff">Vyn</tspan><tspan fill="#A5B4FC">ora</tspan>
   </text>
-  <!-- MARKET tagline with more spacing below Vynora -->
-  <text x="57" y="44" font-family="'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="8" font-weight="500" letter-spacing="2.5" fill="#9CA3AF">
+  <!-- MARKET tagline with more spacing -->
+  <text x="57" y="44" font-family="'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif" font-size="8" font-weight="500" letter-spacing="2.5" fill="#6B7280">
     MARKET
   </text>
 </svg>

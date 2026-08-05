@@ -27,7 +27,12 @@ export default function Navigation() {
             <img
               src="/logo.svg"
               alt="Vynora Market"
-              className="h-9 w-auto sm:h-10 dark:brightness-0 dark:invert"
+              className="h-9 w-auto sm:h-10 block dark:hidden"
+            />
+            <img
+              src="/logo-white.svg"
+              alt="Vynora Market"
+              className="h-9 w-auto sm:h-10 hidden dark:block"
             />
           </Link>
 
