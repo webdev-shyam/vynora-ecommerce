@@ -1,29 +1,61 @@
-import { getCategories, getProducts } from '@/lib/queries';
+import { getCategories } from '@/lib/queries';
 import CategoriesComponent from '@/components/Categories';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { getPrismaClient } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
 export default async function CategoriesPage() {
   const categories = (await getCategories()) as any[];
 
-  // For each category, get accurate product count by querying with the category filter
-  const display = await Promise.all(
-    categories.map(async (c: any) => {
-      // getCategories already includes enriched _count (FK + string match)
-      const dbCount = c._count?.products ?? 0;
-      return {
-        id: c.id,
-        name: c.name,
-        slug: c.slug,
-        description: c.description,
-        image: c.image,
-        count: dbCount,
-      };
-    })
-  );
+  // For each category, also do a direct product count query for accuracy
+  // This counts products matching by both categoryId FK and category string
+  const prisma = getPrismaClient();
+  let display = categories.map((c: any) => ({
+    id: c.id,
+    name: c.name,
+    slug: c.slug,
+    description: c.description,
+    image: c.image,
+    count: c._count?.products ?? 0,
+  }));
+
+  // If we have DB access, do direct count queries for verification
+  if (prisma) {
+    try {
+      display = await Promise.all(
+        categories.map(async (c: any) => {
+          // Count by FK
+          const fkCount = await prisma.product.count({
+            where: { isActive: true, categoryId: c.id },
+          });
+          // Count by category string match (including those with null or different categoryId)
+          const stringCount = await prisma.product.count({
+            where: {
+              isActive: true,
+              category: { equals: c.name, mode: 'insensitive' },
+              OR: [
+                { categoryId: null },
+                { categoryId: { not: c.id } },
+              ],
+            },
+          });
+          return {
+            id: c.id,
+            name: c.name,
+            slug: c.slug,
+            description: c.description,
+            image: c.image,
+            count: fkCount + stringCount,
+          };
+        })
+      );
+    } catch {
+      // Fallback to the counts from getCategories
+    }
+  }
 
   // Only show categories that have products
   const categoriesWithProducts = display.filter((c) => c.count > 0);
