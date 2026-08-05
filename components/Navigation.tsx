@@ -23,15 +23,12 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 shrink-0">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                <span className="font-black text-white text-lg tracking-tighter">V</span>
-              </div>
-              <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white hidden sm:inline">
-                Vynora
-              </span>
-            </div>
+          <Link href="/" className="flex items-center shrink-0">
+            <img
+              src="/logo.svg"
+              alt="Vynora Market"
+              className="h-9 w-auto sm:h-10 dark:brightness-0 dark:invert"
+            />
           </Link>
 
           {/* Desktop Navigation */}
