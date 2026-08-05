@@ -1,0 +1,16 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+Disallow: /api/auth/
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+
+# Sitemaps
+Sitemap: https://www.vynoramarket.me/sitemap.xml
+
+# Crawl-delay (optional hint for polite bots)
+Crawl-delay: 1

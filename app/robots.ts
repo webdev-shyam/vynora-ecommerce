@@ -6,9 +6,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin', '/api/'],
+        disallow: ['/admin', '/admin/', '/api/', '/api/auth/', '/cart', '/checkout', '/account'],
       },
     ],
-    sitemap: 'https://vynoramarket.me/sitemap.xml',
+    sitemap: 'https://www.vynoramarket.me/sitemap.xml',
+    host: 'https://www.vynoramarket.me',
   };
 }
